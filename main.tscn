@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxucwwqgmdwg"]
+
+[ext_resource type="PackedScene" uid="uid://blvqwt8eetv7f" path="res://tank_p1.tscn" id="1_3hx61"]
+[ext_resource type="PackedScene" uid="uid://c14nyiy2m3il1" path="res://tank_p2.tscn" id="2_iycc3"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TankP1" parent="." instance=ExtResource("1_3hx61")]
+
+[node name="TankP2" parent="." instance=ExtResource("2_iycc3")]

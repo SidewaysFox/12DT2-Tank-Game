@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://blvqwt8eetv7f"]
+
+[ext_resource type="Texture2D" uid="uid://4s8qkxttuoht" path="res://p1-tank-hull.png" id="1_ifaqg"]
+[ext_resource type="Script" path="res://tank_p1.gd" id="1_kqcbu"]
+[ext_resource type="PackedScene" uid="uid://cb5h1ojexjid8" path="res://projectile.tscn" id="2_e32cb"]
+[ext_resource type="Texture2D" uid="uid://ct3blvyt43y4f" path="res://p1-tank-turret.png" id="2_sslr7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgk7y"]
+radius = 29.0
+
+[node name="TankP1" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_kqcbu")
+projectile = ExtResource("2_e32cb")
+
+[node name="Hull" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ifaqg")
+
+[node name="Turret" type="Sprite2D" parent="."]
+position = Vector2(0, -4.64916e-06)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_sslr7")
+offset = Vector2(2.08165e-12, -100)
+
+[node name="ProjectileSpawn" type="Node2D" parent="Turret"]
+position = Vector2(2.08165e-12, -250)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vgk7y")
