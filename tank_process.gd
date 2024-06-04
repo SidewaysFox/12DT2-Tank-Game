@@ -46,7 +46,7 @@ rotate_left, rotate_right, fire):
 	
 	# Calculate total velocity and move the tank
 	velocity = Vector2(move_speed * x_current_accel, move_speed * y_current_accel)
-	position += velocity * delta
+	move_and_slide()
 	
 	# Turret rotation
 	if Input.is_action_pressed(rotate_right):

@@ -6,6 +6,7 @@
 size = Vector2(20, 10)
 
 [node name="Projectile" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_7d8sh")
 
 [node name="BodyShape" type="CollisionShape2D" parent="."]
