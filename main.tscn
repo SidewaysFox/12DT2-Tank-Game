@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxucwwqgmdwg"]
+[gd_scene load_steps=9 format=3 uid="uid://dxucwwqgmdwg"]
 
 [ext_resource type="PackedScene" uid="uid://blvqwt8eetv7f" path="res://tank_p1.tscn" id="1_3hx61"]
 [ext_resource type="Script" path="res://main.gd" id="1_5jxqc"]
 [ext_resource type="PackedScene" uid="uid://c14nyiy2m3il1" path="res://tank_p2.tscn" id="2_iycc3"]
+[ext_resource type="PackedScene" uid="uid://6yuv6hj06bs7" path="res://wall.tscn" id="4_ynxm7"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_is1cy"]
-a = Vector2(0, -2.08165e-12)
-b = Vector2(0, 1080)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvl2i"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_21ybl"]
-b = Vector2(1920, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7ex2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ighj0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2okpo"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5jxqc")
@@ -51,21 +53,43 @@ rotation = 1.57086
 color = Color(0.235294, 0.235294, 0.235294, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OuterWall"]
-position = Vector2(15, 2.08165e-12)
-scale = Vector2(10, 1)
-shape = SubResource("SegmentShape2D_is1cy")
+position = Vector2(15, 540)
+scale = Vector2(1.5, 54)
+shape = SubResource("RectangleShape2D_uvl2i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="OuterWall"]
-position = Vector2(1905, 0)
-scale = Vector2(10, 1)
-shape = SubResource("SegmentShape2D_is1cy")
+position = Vector2(1905, 540)
+scale = Vector2(1.5, 54)
+shape = SubResource("RectangleShape2D_l7ex2")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="OuterWall"]
-position = Vector2(0, 15)
-scale = Vector2(1, 10)
-shape = SubResource("SegmentShape2D_21ybl")
+position = Vector2(960, 15)
+scale = Vector2(96, 1.5)
+shape = SubResource("RectangleShape2D_ighj0")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="OuterWall"]
-position = Vector2(0, 1065)
-scale = Vector2(1, 10)
-shape = SubResource("SegmentShape2D_21ybl")
+position = Vector2(960, 1065)
+scale = Vector2(96, 1.5)
+shape = SubResource("RectangleShape2D_2okpo")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall" parent="Walls" instance=ExtResource("4_ynxm7")]
+position = Vector2(960, 540)
+scale = Vector2(4, 4)
+
+[node name="Wall2" parent="Walls" instance=ExtResource("4_ynxm7")]
+position = Vector2(960, 200)
+scale = Vector2(5, 1)
+
+[node name="Wall3" parent="Walls" instance=ExtResource("4_ynxm7")]
+position = Vector2(960, 880)
+scale = Vector2(5, 1)
+
+[node name="Wall4" parent="Walls" instance=ExtResource("4_ynxm7")]
+position = Vector2(480, 540)
+scale = Vector2(1, 5)
+
+[node name="Wall5" parent="Walls" instance=ExtResource("4_ynxm7")]
+position = Vector2(1440, 540)
+scale = Vector2(1, 5)
