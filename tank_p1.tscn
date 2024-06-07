@@ -11,6 +11,8 @@ radius = 29.0
 [node name="TankP1" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_kqcbu")
+x_acceleration = null
+y_acceleration = null
 projectile = ExtResource("2_e32cb")
 
 [node name="Hull" type="Sprite2D" parent="."]
