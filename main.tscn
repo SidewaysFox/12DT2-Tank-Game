@@ -1,102 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxucwwqgmdwg"]
+[gd_scene load_steps=4 format=3 uid="uid://dxucwwqgmdwg"]
 
 [ext_resource type="PackedScene" uid="uid://blvqwt8eetv7f" path="res://tank_p1.tscn" id="1_3hx61"]
 [ext_resource type="Script" path="res://main.gd" id="1_5jxqc"]
 [ext_resource type="PackedScene" uid="uid://c14nyiy2m3il1" path="res://tank_p2.tscn" id="2_iycc3"]
-[ext_resource type="PackedScene" uid="uid://6yuv6hj06bs7" path="res://wall.tscn" id="4_ynxm7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvl2i"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7ex2"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ighj0"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2okpo"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5jxqc")
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
-
 [node name="TankP1" parent="." instance=ExtResource("1_3hx61")]
 position = Vector2(300, 540)
-move_speed = 300.0
-friction = 0.02
-turret_rotate_speed = 3.0
-spread = 2.0
-reload_time = 5.0
 
 [node name="TankP2" parent="." instance=ExtResource("2_iycc3")]
 position = Vector2(1620, 540)
-x_acceleration = null
-y_acceleration = null
-
-[node name="OuterWall" type="StaticBody2D" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="OuterWall"]
-offset_right = 1920.0
-offset_bottom = 30.0
-color = Color(0.235294, 0.235294, 0.235294, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="OuterWall"]
-offset_top = 1050.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.235294, 0.235294, 0.235294, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="OuterWall"]
-offset_left = 30.0
-offset_right = 1110.0
-offset_bottom = 30.0
-rotation = 1.57086
-color = Color(0.235294, 0.235294, 0.235294, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="OuterWall"]
-offset_left = 1920.0
-offset_right = 3000.0
-offset_bottom = 30.0
-rotation = 1.57086
-color = Color(0.235294, 0.235294, 0.235294, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OuterWall"]
-position = Vector2(15, 540)
-scale = Vector2(1.5, 54)
-shape = SubResource("RectangleShape2D_uvl2i")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="OuterWall"]
-position = Vector2(1905, 540)
-scale = Vector2(1.5, 54)
-shape = SubResource("RectangleShape2D_l7ex2")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="OuterWall"]
-position = Vector2(960, 15)
-scale = Vector2(96, 1.5)
-shape = SubResource("RectangleShape2D_ighj0")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="OuterWall"]
-position = Vector2(960, 1065)
-scale = Vector2(96, 1.5)
-shape = SubResource("RectangleShape2D_2okpo")
-
-[node name="Walls" type="Node2D" parent="."]
-
-[node name="Wall" parent="Walls" instance=ExtResource("4_ynxm7")]
-position = Vector2(960, 540)
-scale = Vector2(4, 4)
-
-[node name="Wall2" parent="Walls" instance=ExtResource("4_ynxm7")]
-position = Vector2(960, 200)
-scale = Vector2(5, 1)
-
-[node name="Wall3" parent="Walls" instance=ExtResource("4_ynxm7")]
-position = Vector2(960, 880)
-scale = Vector2(5, 1)
-
-[node name="Wall4" parent="Walls" instance=ExtResource("4_ynxm7")]
-position = Vector2(480, 540)
-scale = Vector2(1, 5)
-
-[node name="Wall5" parent="Walls" instance=ExtResource("4_ynxm7")]
-position = Vector2(1440, 540)
-scale = Vector2(1, 5)
