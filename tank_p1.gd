@@ -5,7 +5,7 @@ extends TankProcess
 
 
 func _ready():
-	position = main.p1_spawns[main.current_map]
+	position = main.p1_spawns[main.next_map]
 
 
 func _process(delta):
