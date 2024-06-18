@@ -6,11 +6,18 @@ var new_map
 var current_map
 var switching = false
 var switch_start = true
+var show_map_name = false
 
 var maps = [
 	"res://map_1.tscn",
 	"res://map_2.tscn",
 	"res://map_3.tscn",
+]
+
+var map_names = [
+	"Grasswall",
+	"Grassierwall",
+	"Grassiestwall"
 ]
 
 var p1_spawns = [
@@ -39,6 +46,7 @@ func _map_switch(delta, initial: bool):
 			next_map = 0
 		# Create new map and position it in hierarchy
 		new_map = load(maps[next_map]).instantiate()
+		show_map_name = true
 		new_map.global_position.x = 1920
 		add_child(new_map)
 		move_child(new_map, 0)
@@ -54,6 +62,7 @@ func _map_switch(delta, initial: bool):
 		elif new_map.global_position.x <= 0:
 			new_map.global_position.x = 0
 			# Delete previous map and set the new current map
+			show_map_name = false
 			next_map += 1
 			current_map.queue_free()
 			current_map = new_map
@@ -65,5 +74,11 @@ func _process(delta):
 		switching = true
 		switch_start = true
 		
-	if switching == true:
+	if switching:
 		_map_switch(delta, false)
+	
+	if show_map_name:
+		$CanvasLayer/ColorRect.show()
+		$CanvasLayer/ColorRect/MapName.text = map_names[next_map]
+	else:
+		$CanvasLayer/ColorRect.hide()
