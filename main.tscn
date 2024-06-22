@@ -15,17 +15,33 @@ position = Vector2(1620, 540)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="MapRect" type="ColorRect" parent="CanvasLayer"]
 offset_left = 600.0
 offset_top = 440.0
 offset_right = 1320.0
 offset_bottom = 640.0
 color = Color(0.392157, 0.392157, 0.392157, 1)
 
-[node name="MapName" type="Label" parent="CanvasLayer/ColorRect"]
+[node name="MapName" type="Label" parent="CanvasLayer/MapRect"]
+layout_mode = 0
+offset_top = 20.0
 offset_right = 720.0
-offset_bottom = 200.0
+offset_bottom = 220.0
 theme_override_font_sizes/font_size = 100
 text = "MAP NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="NewMap" type="Label" parent="CanvasLayer/MapRect"]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 20.0
+offset_right = 435.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 30
+text = "NEW MAP:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)

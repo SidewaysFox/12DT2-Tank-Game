@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://2gcmbyih1hih"]
+
+[ext_resource type="Texture2D" uid="uid://d06rpxjpx8ixy" path="res://bg-1.png" id="1_24dym"]
+[ext_resource type="PackedScene" uid="uid://6yuv6hj06bs7" path="res://wall.tscn" id="2_02ao5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ll8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rx5m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqmdl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyrei"]
+
+[node name="Map2" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_24dym")
+
+[node name="OuterWall" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="OuterWall"]
+offset_top = 270.0
+offset_right = 1920.0
+offset_bottom = 300.0
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="OuterWall"]
+offset_top = 780.0
+offset_right = 1920.0
+offset_bottom = 810.0
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="OuterWall"]
+offset_left = 510.0
+offset_right = 1590.0
+offset_bottom = 30.0
+rotation = 1.57086
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="OuterWall"]
+offset_left = 1440.0
+offset_right = 2520.0
+offset_bottom = 30.0
+rotation = 1.57086
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OuterWall"]
+position = Vector2(495, 540)
+scale = Vector2(1.5, 54)
+shape = SubResource("RectangleShape2D_1ll8u")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OuterWall"]
+position = Vector2(1425, 540)
+scale = Vector2(1.5, 54)
+shape = SubResource("RectangleShape2D_2rx5m")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="OuterWall"]
+position = Vector2(960, 285)
+scale = Vector2(96, 1.5)
+shape = SubResource("RectangleShape2D_nqmdl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="OuterWall"]
+position = Vector2(960, 795)
+scale = Vector2(96, 1.5)
+shape = SubResource("RectangleShape2D_kyrei")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall" parent="Walls" instance=ExtResource("2_02ao5")]
+position = Vector2(960, 640)
+scale = Vector2(2, 2)
+
+[node name="Wall2" parent="Walls" instance=ExtResource("2_02ao5")]
+position = Vector2(960, 460)
+scale = Vector2(2, 2)
+
+[node name="Wall3" parent="Walls" instance=ExtResource("2_02ao5")]
+position = Vector2(680, 540)
+scale = Vector2(2, 2)
+
+[node name="Wall4" parent="Walls" instance=ExtResource("2_02ao5")]
+position = Vector2(1240, 540)
+scale = Vector2(2, 2)
