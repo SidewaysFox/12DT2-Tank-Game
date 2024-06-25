@@ -8,6 +8,7 @@ size = Vector2(20, 10)
 [node name="Projectile" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_7d8sh")
+metadata/projectile = true
 
 [node name="BodyShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xaayj")
@@ -21,6 +22,12 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
+metadata/projectile = true
 
 [node name="AreaShape" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.1, 1.1)
 shape = SubResource("RectangleShape2D_xaayj")
+debug_color = Color(0.992157, 0, 0.27451, 0.419608)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

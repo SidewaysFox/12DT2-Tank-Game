@@ -12,3 +12,13 @@ func _ready():
 func _process(delta):
 	velocity += direction * projectile_speed * delta
 	move_and_slide()
+
+
+func _on_area_2d_area_entered(area):
+	if area.has_meta("projectile"):
+		queue_free()
+
+
+func _on_area_2d_body_entered(body):
+	if not body.has_meta("projectile"):
+		queue_free()

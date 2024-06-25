@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c14nyiy2m3il1"]
+[gd_scene load_steps=7 format=3 uid="uid://c14nyiy2m3il1"]
 
 [ext_resource type="Script" path="res://tank_p2.gd" id="1_uoapu"]
 [ext_resource type="Texture2D" uid="uid://dysqx8y2hbe14" path="res://p2-tank-hull.png" id="2_7cclx"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://djdlxtkrbvbsl" path="res://p2-tank-turret.png" id="3_gafsr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgk7y"]
+radius = 29.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nev50"]
 radius = 29.0
 
 [node name="TankP2" type="CharacterBody2D"]
@@ -24,7 +27,13 @@ texture = ExtResource("3_gafsr")
 offset = Vector2(2.08165e-12, -100)
 
 [node name="ProjectileSpawn" type="Node2D" parent="Turret"]
-position = Vector2(2.08165e-12, -250)
+position = Vector2(2.08165e-12, -240)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vgk7y")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_nev50")
+debug_color = Color(0.992157, 0, 0.27451, 0.419608)
