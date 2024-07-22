@@ -7,12 +7,14 @@ var current_map
 var switching = false
 var switch_start = true
 var show_map_name = false
+var p1_hp = 100
+var p2_hp = 100
 
 var maps = [
-	["res://map_1.tscn", "Grasswall", Vector2(1, 1)],
-	["res://map_2.tscn", "Grassierwall", Vector2(1, 1)],
-	["res://map_3.tscn", "Grassiestwall", Vector2(1, 1)],
-	["res://map_4.tscn", "Grasswall Duel", Vector2(2, 2)],
+	["res://maps/map_1.tscn", "Grasswall", Vector2(1, 1)],
+	["res://maps/map_2.tscn", "Grassierwall", Vector2(1, 1)],
+	["res://maps/map_3.tscn", "Grassiestwall", Vector2(1, 1)],
+	["res://maps/map_4.tscn", "Grasswall Duel", Vector2(2, 2)],
 ]
 
 var p1_spawns = [
@@ -66,19 +68,28 @@ func _map_switch(delta, initial: bool):
 			next_map += 1
 			current_map.queue_free()
 			current_map = new_map
+			p1_hp = 100
+			p2_hp = 100
 			switching = false
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("temp_map_switch") and switching == false:
-		switching = true
-		switch_start = true
-		
-	if switching:
+	if not switching:
+		# Should the map be switched?
+		if not switch_start:
+			if p1_hp <= 0 or p2_hp <= 0:
+				switch_start = true
+				$SwitchWait.start(1)
+	else:
 		_map_switch(delta, false)
 	
+	# Showing map name
 	if show_map_name:
 		$CanvasLayer/MapRect.show()
 		$CanvasLayer/MapRect/MapName.text = maps[next_map][1]
 	else:
 		$CanvasLayer/MapRect.hide()
+
+
+func _on_switch_wait_timeout():
+	switching = true

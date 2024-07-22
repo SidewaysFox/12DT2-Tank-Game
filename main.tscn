@@ -13,6 +13,9 @@ position = Vector2(300, 540)
 [node name="TankP2" parent="." instance=ExtResource("2_iycc3")]
 position = Vector2(1620, 540)
 
+[node name="SwitchWait" type="Timer" parent="."]
+one_shot = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MapRect" type="ColorRect" parent="CanvasLayer"]
@@ -45,3 +48,5 @@ vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+
+[connection signal="timeout" from="SwitchWait" to="." method="_on_switch_wait_timeout"]
