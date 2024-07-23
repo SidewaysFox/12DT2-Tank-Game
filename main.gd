@@ -79,7 +79,7 @@ func _process(delta):
 		if not switch_start:
 			if p1_hp <= 0 or p2_hp <= 0:
 				switch_start = true
-				$SwitchWait.start(1)
+				$SwitchWait.start(2)
 	else:
 		_map_switch(delta, false)
 	
