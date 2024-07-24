@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @onready var main = get_node("/root/Main/")
-@export var projectile_speed = 5000
+@export var projectile_speed = 100000
 var direction: Vector2
 
 
@@ -11,7 +11,7 @@ func _ready():
 
 
 func _process(delta):
-	velocity += direction * projectile_speed * delta
+	velocity = direction * projectile_speed * delta
 	move_and_slide()
 
 

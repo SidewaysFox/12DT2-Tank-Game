@@ -9,6 +9,9 @@ var switch_start = true
 var show_map_name = false
 var p1_hp = 100
 var p2_hp = 100
+var score = Vector2(0, 0)
+
+signal up_score(winner)
 
 var maps = [
 	["res://maps/map_1.tscn", "Grasswall", Vector2(1, 1)],
@@ -77,9 +80,15 @@ func _process(delta):
 	if not switching:
 		# Should the map be switched?
 		if not switch_start:
-			if p1_hp <= 0 or p2_hp <= 0:
+			# Who died
+			if p1_hp <= 0:
 				switch_start = true
-				$SwitchWait.start(2)
+				$SwitchWait.start(2.5)
+				emit_signal("up_score", 2)
+			if p2_hp <= 0:
+				switch_start = true
+				$SwitchWait.start(2.5)
+				emit_signal("up_score", 1)
 	else:
 		_map_switch(delta, false)
 	
