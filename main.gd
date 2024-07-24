@@ -85,10 +85,10 @@ func _process(delta):
 	
 	# Showing map name
 	if show_map_name:
-		$CanvasLayer/MapRect.show()
-		$CanvasLayer/MapRect/MapName.text = maps[next_map][1]
+		$CanvasLayer/NameRect.show()
+		$CanvasLayer/NameRect/MapName.text = maps[next_map][1]
 	else:
-		$CanvasLayer/MapRect.hide()
+		$CanvasLayer/NameRect.hide()
 
 
 func _on_switch_wait_timeout():
