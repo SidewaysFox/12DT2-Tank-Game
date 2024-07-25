@@ -7,7 +7,7 @@ const MOVE_SPEED = 400.0
 const ACCELERATION = Vector2(0.05, 0.05)
 const FRICTION = 0.02
 const TURRET_ROTATE_SPEED = 3.0
-const SPREAD = 2.0
+const SPREAD = 1.0
 const RELOAD_TIME = 5.0
 var current_accel = Vector2(0.0, 0.0)
 

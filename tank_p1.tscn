@@ -39,3 +39,8 @@ metadata/player = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_71i1j")
 debug_color = Color(0.992157, 0, 0.27451, 0.419608)
+
+[node name="DamageEffect" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DamageEffect" to="." method="_on_damage_effect_timeout"]

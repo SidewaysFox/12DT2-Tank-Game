@@ -38,3 +38,8 @@ shape = SubResource("CircleShape2D_vgk7y")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_nev50")
 debug_color = Color(0.992157, 0, 0.27451, 0.419608)
+
+[node name="DamageEffect" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DamageEffect" to="." method="_on_damage_effect_timeout"]
