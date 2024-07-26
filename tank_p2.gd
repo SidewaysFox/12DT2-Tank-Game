@@ -22,6 +22,8 @@ func _process(delta):
 	if hp2_check != main.p2_hp:
 		$Hull.self_modulate = Color(1, 0.5, 0.5)
 		$DamageEffect.start(0.1)
+	
+	$HealthBar.value = main.p2_hp
 	hp2_check = main.p2_hp
 
 

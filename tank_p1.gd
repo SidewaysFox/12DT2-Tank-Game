@@ -23,6 +23,7 @@ func _process(delta):
 		$Hull.self_modulate = Color(1, 0.5, 0.5)
 		$DamageEffect.start(0.1)
 	
+	$HealthBar.value = main.p1_hp
 	hp1_check = main.p1_hp
 
 

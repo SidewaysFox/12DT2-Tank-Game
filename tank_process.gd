@@ -2,6 +2,7 @@ class_name TankProcess extends CharacterBody2D
 
 
 @onready var main = get_node("/root/Main/")
+@onready var scores = get_node("/root/Main/Scores/")
 @export var projectile: PackedScene
 const MOVE_SPEED = 400.0
 const ACCELERATION = Vector2(0.05, 0.05)
@@ -17,7 +18,7 @@ rotate_right, fire):
 	velocity = Vector2.ZERO
 	
 	# Make sure maps aren't switching
-	if not main.switching:
+	if not main.switching and not scores.active:
 		$CollisionShape2D.disabled = false
 		
 		# Y-axis movement
@@ -66,7 +67,7 @@ rotate_right, fire):
 			add_sibling(new_projectile)
 	
 	# Maps are switching
-	else:
+	elif main.switching and not scores.active:
 		$CollisionShape2D.disabled = true
 		if id == 1:
 			position = lerp(position, main.p1_spawns[main.next_map], 0.1)
