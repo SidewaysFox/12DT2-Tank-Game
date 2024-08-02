@@ -1,11 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxucwwqgmdwg"]
+[gd_scene load_steps=11 format=3 uid="uid://dxucwwqgmdwg"]
 
 [ext_resource type="PackedScene" uid="uid://blvqwt8eetv7f" path="res://tank_p1.tscn" id="1_3hx61"]
 [ext_resource type="Script" path="res://main.gd" id="1_5jxqc"]
 [ext_resource type="PackedScene" uid="uid://c14nyiy2m3il1" path="res://tank_p2.tscn" id="2_iycc3"]
 [ext_resource type="PackedScene" uid="uid://bifeekbl51eaj" path="res://scores.tscn" id="4_pqssx"]
+[ext_resource type="Texture2D" uid="uid://cfrbummg54s6h" path="res://pause-button-revised-again.png" id="5_42dag"]
+[ext_resource type="Texture2D" uid="uid://igprb37fxgh2" path="res://pause-button.png" id="5_q2ymr"]
+[ext_resource type="Script" path="res://PauseItems.gd" id="5_ty6pf"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_yvyto"]
+device = -1
+keycode = 80
+unicode = 112
+
+[sub_resource type="InputEventKey" id="InputEventKey_qts1k"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_j12ln"]
+events = [SubResource("InputEventKey_yvyto"), SubResource("InputEventKey_qts1k")]
 
 [node name="Main" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_5jxqc")
 
 [node name="TankP1" parent="." instance=ExtResource("1_3hx61")]
@@ -53,8 +69,51 @@ text = "NEW MAP:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PauseItems" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_ty6pf")
+
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer/PauseItems"]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0.784314)
+offset_left = 1799.0
+offset_right = 1920.0
+offset_bottom = 121.0
+shortcut = SubResource("Shortcut_j12ln")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("5_42dag")
+texture_pressed = ExtResource("5_q2ymr")
+
+[node name="Paused" type="Label" parent="CanvasLayer/PauseItems"]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 100.0
+offset_right = 1145.0
+offset_bottom = 235.0
+theme_override_font_sizes/font_size = 96
+text = "PAUSED"
+
+[node name="Resume" type="TextureButton" parent="CanvasLayer/PauseItems/Paused"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Settings" type="TextureButton" parent="CanvasLayer/PauseItems/Paused"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ReturnToTitle" type="TextureButton" parent="CanvasLayer/PauseItems/Paused"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
 [connection signal="up_score" from="." to="Scores" method="_up_score"]
 [connection signal="timeout" from="SwitchWait" to="." method="_on_switch_wait_timeout"]
+[connection signal="pressed" from="CanvasLayer/PauseItems/PauseButton" to="CanvasLayer/PauseItems" method="_on_pause_button_pressed"]
