@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxucwwqgmdwg"]
+[gd_scene load_steps=22 format=3 uid="uid://dxucwwqgmdwg"]
 
 [ext_resource type="PackedScene" uid="uid://blvqwt8eetv7f" path="res://tank_p1.tscn" id="1_3hx61"]
 [ext_resource type="Script" path="res://main.gd" id="1_5jxqc"]
@@ -7,6 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://cfrbummg54s6h" path="res://pause-button-revised-again.png" id="5_42dag"]
 [ext_resource type="Texture2D" uid="uid://igprb37fxgh2" path="res://pause-button.png" id="5_q2ymr"]
 [ext_resource type="Script" path="res://PauseItems.gd" id="5_ty6pf"]
+[ext_resource type="Shader" path="res://blur.gdshader" id="6_08qe4"]
+[ext_resource type="Texture2D" uid="uid://bwlgkwk0xcte2" path="res://resume-button-revised.png" id="8_602bq"]
+[ext_resource type="Texture2D" uid="uid://c3vih5u28wi5l" path="res://resume-button-hover.png" id="9_1nh2r"]
+[ext_resource type="Texture2D" uid="uid://b2b34g6m083ok" path="res://resume-button-click.png" id="9_nt33j"]
+[ext_resource type="Texture2D" uid="uid://in5lhciw6gjn" path="res://settings-button.png" id="11_k1bvh"]
+[ext_resource type="Texture2D" uid="uid://pwojic45ge66" path="res://settings-button-click.png" id="12_xnep0"]
+[ext_resource type="Texture2D" uid="uid://uwuhly2ae4nn" path="res://settings-button-hover.png" id="13_tsfjl"]
+[ext_resource type="Texture2D" uid="uid://b8y78anmnubv1" path="res://menu-button.png" id="14_x31xn"]
+[ext_resource type="Texture2D" uid="uid://4y1ityinvdfe" path="res://menu-button-click.png" id="15_dein4"]
+[ext_resource type="Texture2D" uid="uid://dvho08qwr8m1w" path="res://menu-button-hover.png" id="16_4wdxl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7ivc"]
+shader = ExtResource("6_08qe4")
+shader_parameter/lod = 3.0
 
 [sub_resource type="InputEventKey" id="InputEventKey_yvyto"]
 device = -1
@@ -76,9 +90,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_ty6pf")
 
+[node name="Blur" type="ColorRect" parent="CanvasLayer/PauseItems"]
+material = SubResource("ShaderMaterial_i7ivc")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
 [node name="PauseButton" type="TextureButton" parent="CanvasLayer/PauseItems"]
 process_mode = 3
 self_modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
 offset_left = 1799.0
 offset_right = 1920.0
 offset_bottom = 121.0
@@ -90,26 +111,43 @@ texture_pressed = ExtResource("5_q2ymr")
 [node name="Paused" type="Label" parent="CanvasLayer/PauseItems"]
 layout_mode = 0
 offset_left = 775.0
-offset_top = 100.0
+offset_top = 150.0
 offset_right = 1145.0
-offset_bottom = 235.0
+offset_bottom = 285.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 96
 text = "PAUSED"
 
 [node name="Resume" type="TextureButton" parent="CanvasLayer/PauseItems/Paused"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -16.0
+offset_top = 250.0
+offset_right = 386.0
+offset_bottom = 370.0
+texture_normal = ExtResource("8_602bq")
+texture_pressed = ExtResource("9_nt33j")
+texture_hover = ExtResource("9_1nh2r")
 
 [node name="Settings" type="TextureButton" parent="CanvasLayer/PauseItems/Paused"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -16.0
+offset_top = 400.0
+offset_right = 386.0
+offset_bottom = 521.0
+texture_normal = ExtResource("11_k1bvh")
+texture_pressed = ExtResource("12_xnep0")
+texture_hover = ExtResource("13_tsfjl")
 
-[node name="ReturnToTitle" type="TextureButton" parent="CanvasLayer/PauseItems/Paused"]
+[node name="Menu" type="TextureButton" parent="CanvasLayer/PauseItems/Paused"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -16.0
+offset_top = 550.0
+offset_right = 386.0
+offset_bottom = 670.0
+texture_normal = ExtResource("14_x31xn")
+texture_pressed = ExtResource("15_dein4")
+texture_hover = ExtResource("16_4wdxl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
