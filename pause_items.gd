@@ -15,3 +15,16 @@ func _on_pause_button_pressed():
 		get_tree().paused = true
 		$Paused.show()
 		$Blur.show()
+
+
+func _on_resume_pressed():
+	print("pressed")
+	_on_pause_button_pressed()
+
+
+func _on_settings_pressed():
+	pass
+
+
+func _on_menu_pressed():
+	get_tree().change_scene_to_file("res://title_screen.tscn")

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bifeekbl51eaj" path="res://scores.tscn" id="4_pqssx"]
 [ext_resource type="Texture2D" uid="uid://cfrbummg54s6h" path="res://pause-button-revised-again.png" id="5_42dag"]
 [ext_resource type="Texture2D" uid="uid://igprb37fxgh2" path="res://pause-button.png" id="5_q2ymr"]
-[ext_resource type="Script" path="res://PauseItems.gd" id="5_ty6pf"]
+[ext_resource type="Script" path="res://pause_items.gd" id="5_xscfo"]
 [ext_resource type="Shader" path="res://blur.gdshader" id="6_08qe4"]
 [ext_resource type="Texture2D" uid="uid://bwlgkwk0xcte2" path="res://resume-button-revised.png" id="8_602bq"]
 [ext_resource type="Texture2D" uid="uid://c3vih5u28wi5l" path="res://resume-button-hover.png" id="9_1nh2r"]
@@ -84,11 +84,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PauseItems" type="Control" parent="CanvasLayer"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("5_ty6pf")
+script = ExtResource("5_xscfo")
 
 [node name="Blur" type="ColorRect" parent="CanvasLayer/PauseItems"]
 material = SubResource("ShaderMaterial_i7ivc")
@@ -155,3 +156,6 @@ position = Vector2(960, 540)
 [connection signal="up_score" from="." to="Scores" method="_up_score"]
 [connection signal="timeout" from="SwitchWait" to="." method="_on_switch_wait_timeout"]
 [connection signal="pressed" from="CanvasLayer/PauseItems/PauseButton" to="CanvasLayer/PauseItems" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseItems/Paused/Resume" to="CanvasLayer/PauseItems" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseItems/Paused/Settings" to="CanvasLayer/PauseItems" method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseItems/Paused/Menu" to="CanvasLayer/PauseItems" method="_on_menu_pressed"]
