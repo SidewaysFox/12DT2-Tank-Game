@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bibt8hkhcmsv6"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_8p6bk"]
+[ext_resource type="PackedScene" uid="uid://ceulwtbfala4y" path="res://tank_p1_menu.tscn" id="2_isips"]
+[ext_resource type="PackedScene" uid="uid://llccokf4wxa5" path="res://tank_p2_menu.tscn" id="3_bhugq"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_8p6bk")
+
+[node name="TankP1Menu" parent="." instance=ExtResource("2_isips")]
+
+[node name="TankP2Menu" parent="." instance=ExtResource("3_bhugq")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)

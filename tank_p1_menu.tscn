@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://ceulwtbfala4y"]
+
+[ext_resource type="Script" path="res://tank_p1_menu.gd" id="1_uom5e"]
+[ext_resource type="PackedScene" uid="uid://bbscirgbc23sn" path="res://projectile_menu.tscn" id="2_qm7ww"]
+[ext_resource type="Texture2D" uid="uid://4s8qkxttuoht" path="res://p1-tank-hull.png" id="3_63335"]
+[ext_resource type="Texture2D" uid="uid://ct3blvyt43y4f" path="res://p1-tank-turret.png" id="4_a500d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgk7y"]
+radius = 29.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71i1j"]
+radius = 29.0
+
+[node name="TankP1Menu" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_uom5e")
+projectile = ExtResource("2_qm7ww")
+metadata/p1 = true
+
+[node name="Hull" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_63335")
+
+[node name="Turret" type="Sprite2D" parent="."]
+position = Vector2(0, -4.64916e-06)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_a500d")
+offset = Vector2(2.08165e-12, -100)
+
+[node name="ProjectileSpawn" type="Node2D" parent="Turret"]
+position = Vector2(2.08165e-12, -240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vgk7y")
+metadata/player = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_71i1j")
+debug_color = Color(0.992157, 0, 0.27451, 0.419608)
+
+[node name="DamageEffect" type="Timer" parent="."]
+one_shot = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0.313726, 0, 1)
+offset_left = -30.0
+offset_top = -53.0
+offset_right = 30.0
+offset_bottom = -48.0
+step = 1.0
+allow_lesser = true
+show_percentage = false
+
+[node name="Respawn" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DamageEffect" to="." method="_on_damage_effect_timeout"]
+[connection signal="timeout" from="Respawn" to="." method="_on_respawn_timeout"]

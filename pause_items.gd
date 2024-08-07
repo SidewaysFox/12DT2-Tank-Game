@@ -27,4 +27,4 @@ func _on_settings_pressed():
 
 
 func _on_menu_pressed():
-	get_tree().change_scene_to_file("res://title_screen.tscn")
+	get_tree().change_scene_to_file("res://menu.tscn")
