@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bifeekbl51eaj"]
+[gd_scene load_steps=3 format=3 uid="uid://bifeekbl51eaj"]
 
 [ext_resource type="Script" path="res://scores.gd" id="1_6ufno"]
+[ext_resource type="FontFile" uid="uid://fy4as8fu8sms" path="res://DINAlternate-Bold.ttf" id="2_royol"]
 
 [node name="Scores" type="Node2D"]
 script = ExtResource("1_6ufno")
@@ -16,6 +17,7 @@ offset_bottom = -130.0
 theme_override_colors/font_color = Color(1, 0.313726, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_royol")
 theme_override_font_sizes/font_size = 96
 text = "P1:"
 horizontal_alignment = 1
@@ -32,6 +34,7 @@ offset_bottom = 265.0
 theme_override_colors/font_color = Color(0.392157, 0.392157, 0.392157, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_royol")
 theme_override_font_sizes/font_size = 96
 text = "0"
 horizontal_alignment = 1
@@ -45,9 +48,12 @@ offset_right = 1030.0
 offset_bottom = 1345.0
 theme_override_colors/font_color = Color(0, 0.313726, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_royol")
 theme_override_font_sizes/font_size = 96
 text = "P2:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="P2Score" type="Label" parent="CanvasLayer/P2Label"]
 layout_mode = 1
@@ -60,6 +66,7 @@ offset_bottom = 5.0
 theme_override_colors/font_color = Color(0.392157, 0.392157, 0.392157, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_royol")
 theme_override_font_sizes/font_size = 96
 text = "0"
 horizontal_alignment = 1

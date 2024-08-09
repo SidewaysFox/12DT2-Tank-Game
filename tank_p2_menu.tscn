@@ -32,11 +32,13 @@ position = Vector2(2.08165e-12, -240)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vgk7y")
+one_way_collision_margin = 4.0
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_nev50")
+one_way_collision_margin = 4.0
 debug_color = Color(0.992157, 0, 0.27451, 0.419608)
 
 [node name="DamageEffect" type="Timer" parent="."]

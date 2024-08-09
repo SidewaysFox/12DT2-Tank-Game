@@ -14,13 +14,22 @@ func _process(delta):
 	"p2_rotate_left", "p2_rotate_right", "p2_fire")
 	
 	if not respawning:
+		if not menu.switching:
+			$CollisionShape2D.disabled = false
+			$Area2D/CollisionShape2D.disabled = false
 		# Has died?
-		if menu.p2_hp <= 0:
-			hide()
-			respawning = true
-			$Respawn.start(3)
+			if menu.p2_hp <= 0:
+				hide()
+				respawning = true
+				$Respawn.start(3)
+			else:
+				show()
 		else:
-			show()
+			$CollisionShape2D.disabled = true
+			$Area2D/CollisionShape2D.disabled = true
+	else:
+		$CollisionShape2D.disabled = true
+		$Area2D/CollisionShape2D.disabled = true
 	
 	# Has taken damage?
 	if hp2_check != menu.p2_hp:

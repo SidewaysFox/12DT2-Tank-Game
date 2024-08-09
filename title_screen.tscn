@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cufev5lggoewn"]
+[gd_scene load_steps=9 format=3 uid="uid://cufev5lggoewn"]
 
 [ext_resource type="Texture2D" uid="uid://bdqx77n4gvlx" path="res://bg-menu.png" id="1_v1486"]
 [ext_resource type="Texture2D" uid="uid://dfnq4cpusdgi0" path="res://tank-game-title.png" id="2_utm0x"]
+[ext_resource type="FontFile" uid="uid://fy4as8fu8sms" path="res://DINAlternate-Bold.ttf" id="3_4pn3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwf28"]
 
@@ -76,3 +77,33 @@ texture = ExtResource("2_utm0x")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Title"]
 position = Vector2(960, 535.75)
 shape = SubResource("RectangleShape2D_knoef")
+
+[node name="P1Controls" type="Label" parent="."]
+offset_left = 810.0
+offset_top = 70.0
+offset_right = 1111.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(1, 0.313726, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_4pn3y")
+theme_override_font_sizes/font_size = 48
+text = "P1 CONTROLS:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="P1Controls"]
+layout_mode = 0
+offset_top = 90.0
+offset_right = 301.0
+offset_bottom = 186.0
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_4pn3y")
+theme_override_font_sizes/font_size = 24
+text = "WASD - Movement
+ZX - Rotate turret
+Left shift - Fire"
+horizontal_alignment = 1
+vertical_alignment = 1

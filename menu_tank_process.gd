@@ -18,8 +18,6 @@ rotate_right, fire):
 	
 	# Make sure maps aren't switching
 	if not menu.switching:
-		$CollisionShape2D.disabled = false
-		
 		# Y-axis movement
 		if Input.is_action_pressed(down):
 			if current_accel.y < 1:
@@ -67,7 +65,6 @@ rotate_right, fire):
 	
 	# Maps are switching
 	elif menu.switching:
-		$CollisionShape2D.disabled = true
 		if id == 1:
 			position = lerp(position, menu.p1_spawns[menu.selected_menu], 0.1)
 		else:
