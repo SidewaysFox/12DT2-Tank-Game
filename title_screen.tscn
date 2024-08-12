@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cufev5lggoewn"]
+[gd_scene load_steps=10 format=3 uid="uid://cufev5lggoewn"]
 
 [ext_resource type="Texture2D" uid="uid://bdqx77n4gvlx" path="res://bg-menu.png" id="1_v1486"]
+[ext_resource type="Script" path="res://title_screen.gd" id="1_y3y1n"]
 [ext_resource type="Texture2D" uid="uid://dfnq4cpusdgi0" path="res://tank-game-title.png" id="2_utm0x"]
 [ext_resource type="FontFile" uid="uid://fy4as8fu8sms" path="res://DINAlternate-Bold.ttf" id="3_4pn3y"]
 
@@ -16,6 +17,7 @@
 size = Vector2(680, 112.5)
 
 [node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_y3y1n")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -80,7 +82,7 @@ shape = SubResource("RectangleShape2D_knoef")
 
 [node name="P1Controls" type="Label" parent="."]
 offset_left = 810.0
-offset_top = 70.0
+offset_top = 68.0
 offset_right = 1111.0
 offset_bottom = 158.0
 theme_override_colors/font_color = Color(1, 0.313726, 0, 1)
@@ -105,5 +107,62 @@ theme_override_font_sizes/font_size = 24
 text = "WASD - Movement
 ZX - Rotate turret
 Left shift - Fire"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2Controls" type="Label" parent="."]
+offset_left = 810.0
+offset_top = 800.0
+offset_right = 1111.0
+offset_bottom = 890.0
+theme_override_colors/font_color = Color(0, 0.313726, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_4pn3y")
+theme_override_font_sizes/font_size = 48
+text = "P2 CONTROLS:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="Label" parent="P2Controls"]
+offset_top = 90.0
+offset_right = 301.0
+offset_bottom = 186.0
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_4pn3y")
+theme_override_font_sizes/font_size = 24
+text = "Arrow keys/IJKL - Movement
+NM/<> - Rotate turret
+Space bar - Fire"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P1Label" type="Label" parent="."]
+offset_left = 275.0
+offset_top = 600.0
+offset_right = 326.0
+offset_bottom = 660.0
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_4pn3y")
+theme_override_font_sizes/font_size = 48
+text = "P1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2Label" type="Label" parent="."]
+offset_left = 1594.0
+offset_top = 600.0
+offset_right = 1645.0
+offset_bottom = 660.0
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_4pn3y")
+theme_override_font_sizes/font_size = 48
+text = "P2"
 horizontal_alignment = 1
 vertical_alignment = 1

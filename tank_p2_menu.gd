@@ -3,6 +3,9 @@ extends MenuTankProcess
 
 var hp2_check = 100
 var respawning = false
+var direction_inputted = false
+var rotation_inputted = false
+var fire_inputted = false
 
 
 func _ready():
@@ -12,6 +15,16 @@ func _ready():
 func _process(delta):
 	_tank_process(delta, 2, "p2_up", "p2_down", "p2_left", "p2_right", \
 	"p2_rotate_left", "p2_rotate_right", "p2_fire")
+	
+	if Input.is_action_just_pressed("p2_up") or Input.is_action_just_pressed("p2_down") or \
+	Input.is_action_just_pressed("p2_left") or Input.is_action_just_pressed("p2_right"):
+		direction_inputted = true
+	
+	if Input.is_action_just_pressed("p2_rotate_left") or Input.is_action_just_pressed("p2_rotate_right"):
+		rotation_inputted = true
+	
+	if Input.is_action_just_pressed("p2_fire"):
+		fire_inputted = true
 	
 	if not respawning:
 		if not menu.switching:
