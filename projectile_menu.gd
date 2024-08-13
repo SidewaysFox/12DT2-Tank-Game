@@ -26,4 +26,12 @@ func _on_area_2d_body_entered(body):
 			menu.p1_hp -= randi_range(15, 20)
 		if body.has_meta("p2"):
 			menu.p2_hp -= randi_range(15, 20)
+		if body.has_meta("play"):
+			menu.play_hp -= 1
+		if body.has_meta("settings"):
+			menu.settings_hp -= 1
+		if body.has_meta("credits"):
+			menu.credits_hp -= 1
+		if body.has_meta("quit"):
+			menu.quit_hp -= 1
 		queue_free()

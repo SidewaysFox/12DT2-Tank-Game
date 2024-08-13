@@ -1,9 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://cufev5lggoewn"]
+[gd_scene load_steps=18 format=3 uid="uid://cufev5lggoewn"]
 
 [ext_resource type="Texture2D" uid="uid://bdqx77n4gvlx" path="res://bg-menu.png" id="1_v1486"]
 [ext_resource type="Script" path="res://title_screen.gd" id="1_y3y1n"]
 [ext_resource type="Texture2D" uid="uid://dfnq4cpusdgi0" path="res://tank-game-title.png" id="2_utm0x"]
 [ext_resource type="FontFile" uid="uid://fy4as8fu8sms" path="res://DINAlternate-Bold.ttf" id="3_4pn3y"]
+[ext_resource type="Texture2D" uid="uid://dpoofp5w1oym2" path="res://menu-play-button-3.png" id="3_lgfcy"]
+[ext_resource type="Texture2D" uid="uid://bonu5se1f6atc" path="res://menu-settings-button-3.png" id="4_klcpm"]
+[ext_resource type="Texture2D" uid="uid://eruij11303jp" path="res://menu-credits-button-3.png" id="5_h80j8"]
+[ext_resource type="Texture2D" uid="uid://beqikwievpkon" path="res://menu-quit-button-3.png" id="6_dq2nt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pncfk"]
+size = Vector2(200, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eolb7"]
+size = Vector2(200, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yiotl"]
+size = Vector2(200, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y851n"]
+size = Vector2(200, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwf28"]
 
@@ -22,6 +38,50 @@ script = ExtResource("1_y3y1n")
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 texture = ExtResource("1_v1486")
+
+[node name="PlayButton" type="StaticBody2D" parent="."]
+metadata/play = true
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayButton"]
+position = Vector2(450, 50)
+texture = ExtResource("3_lgfcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayButton"]
+position = Vector2(450, 50)
+shape = SubResource("RectangleShape2D_pncfk")
+
+[node name="SettingsButton" type="StaticBody2D" parent="."]
+metadata/settings = true
+
+[node name="Sprite2D" type="Sprite2D" parent="SettingsButton"]
+position = Vector2(1470, 50)
+texture = ExtResource("4_klcpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SettingsButton"]
+position = Vector2(1470, 50.5)
+shape = SubResource("RectangleShape2D_eolb7")
+
+[node name="CreditsButton" type="StaticBody2D" parent="."]
+metadata/credits = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CreditsButton"]
+position = Vector2(450, 1030)
+texture = ExtResource("5_h80j8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CreditsButton"]
+position = Vector2(450, 1030)
+shape = SubResource("RectangleShape2D_yiotl")
+
+[node name="QuitButton" type="StaticBody2D" parent="."]
+metadata/quit = true
+
+[node name="Sprite2D" type="Sprite2D" parent="QuitButton"]
+position = Vector2(1470, 1030)
+texture = ExtResource("6_dq2nt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuitButton"]
+position = Vector2(1470, 1030)
+shape = SubResource("RectangleShape2D_y851n")
 
 [node name="OuterWall" type="StaticBody2D" parent="."]
 
@@ -125,6 +185,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Text" type="Label" parent="P2Controls"]
+layout_mode = 0
 offset_top = 90.0
 offset_right = 301.0
 offset_bottom = 186.0

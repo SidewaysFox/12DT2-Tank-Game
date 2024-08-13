@@ -9,22 +9,29 @@ var switching = false
 var switch_start = true
 var p1_hp = 100
 var p2_hp = 100
+var play_hp = 3
+var settings_hp = 3
+var credits_hp = 3
+var quit_hp = 3
 
 var menus = [
 	["res://title_screen.tscn", Vector2(1, 1)],
 	["res://settings_screen.tscn", Vector2(1, 1)],
 	["res://credits_screen.tscn", Vector2(2, 2)],
+	["res://loading_screen.tscn", Vector2(1, 1)]
 ]
 
 var p1_spawns = [
 	Vector2(300, 540),
 	Vector2(300, 540),
 	Vector2(600, 540),
+	Vector2(300, 540),
 ]
 var p2_spawns = [
 	Vector2(1620, 540),
 	Vector2(1620, 540),
 	Vector2(1320, 540),
+	Vector2(1620, 540),
 ]
 
 
@@ -37,6 +44,10 @@ func _ready():
 
 func _menu_switch(delta, location, initial: bool):
 	if switch_start == true:
+		play_hp = 3
+		settings_hp = 3
+		credits_hp = 3
+		quit_hp = 3
 		# Create new menu and position it in hierarchy
 		new_menu = load(menus[location][0]).instantiate()
 		new_menu.global_position.x = 1920
@@ -62,6 +73,8 @@ func _menu_switch(delta, location, initial: bool):
 			p1_hp = 100
 			p2_hp = 100
 			switching = false
+			if location == 3:
+				$PlayTimer.start(1)
 
 
 func _process(delta):
@@ -69,8 +82,24 @@ func _process(delta):
 		# Should the menu be switched?
 		if not switch_start:
 			# Who died
-			if pushed:
+			if settings_hp <= 0:
 				switch_start = true
 				switching = true
+				selected_menu = 1
+			elif credits_hp <= 0:
+				switch_start = true
+				switching = true
+				selected_menu = 2
+			elif play_hp <= 0:
+				switch_start = true
+				switching = true
+				selected_menu = 3
+		
+		if quit_hp <= 0:
+			get_tree().quit()
 	else:
 		_menu_switch(delta, selected_menu, false)
+
+
+func _on_play_timer_timeout():
+	get_tree().change_scene_to_file("res://main.tscn")

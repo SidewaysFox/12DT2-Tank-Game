@@ -13,3 +13,8 @@ script = ExtResource("1_8p6bk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+
+[node name="PlayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="PlayTimer" to="." method="_on_play_timer_timeout"]
