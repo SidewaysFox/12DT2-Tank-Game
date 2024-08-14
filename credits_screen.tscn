@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://r5xpv02nbhc7"]
+[gd_scene load_steps=11 format=3 uid="uid://r5xpv02nbhc7"]
 
 [ext_resource type="Texture2D" uid="uid://bdqx77n4gvlx" path="res://bg-menu.png" id="1_njs4n"]
+[ext_resource type="Script" path="res://credits_screen.gd" id="1_w0jnp"]
 [ext_resource type="Texture2D" uid="uid://cq3b0kvqcxy0d" path="res://tank-game-credits.png" id="2_vd6kc"]
+[ext_resource type="Texture2D" uid="uid://e1xpuqmactei" path="res://menu-back-button-3.png" id="4_jlylf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwf28"]
 
@@ -14,7 +16,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_knoef"]
 size = Vector2(680, 112.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6itef"]
+size = Vector2(200, 40)
+
 [node name="CreditsScreen" type="Node2D"]
+script = ExtResource("1_w0jnp")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -77,3 +83,14 @@ texture = ExtResource("2_vd6kc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Settings"]
 position = Vector2(960, 535.75)
 shape = SubResource("RectangleShape2D_knoef")
+
+[node name="BackButton" type="StaticBody2D" parent="."]
+metadata/back = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BackButton"]
+position = Vector2(960, 775)
+texture = ExtResource("4_jlylf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackButton"]
+position = Vector2(960, 775)
+shape = SubResource("RectangleShape2D_6itef")

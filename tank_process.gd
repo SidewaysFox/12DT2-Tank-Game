@@ -20,6 +20,7 @@ rotate_right, fire):
 	# Make sure maps aren't switching
 	if not main.switching and not scores.active:
 		$CollisionShape2D.disabled = false
+		queue_redraw()
 		
 		# Y-axis movement
 		if Input.is_action_pressed(down):
@@ -73,3 +74,7 @@ rotate_right, fire):
 			position = lerp(position, main.p1_spawns[main.next_map], 0.1)
 		else:
 			position = lerp(position, main.p2_spawns[main.next_map], 0.1)
+
+
+func _draw():
+	draw_line(Vector2(0,0), to_local($Turret/RayCast2D.get_collision_point()), Color(255, 255, 255, 0.5), 3.0)

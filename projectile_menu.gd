@@ -34,4 +34,6 @@ func _on_area_2d_body_entered(body):
 			menu.credits_hp -= 1
 		if body.has_meta("quit"):
 			menu.quit_hp -= 1
+		if body.has_meta("back"):
+			menu.back_hp -= 1
 		queue_free()

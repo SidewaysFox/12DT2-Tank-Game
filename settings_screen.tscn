@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvranrson05cr"]
+[gd_scene load_steps=11 format=3 uid="uid://bvranrson05cr"]
 
 [ext_resource type="Texture2D" uid="uid://bdqx77n4gvlx" path="res://bg-menu.png" id="1_4nh77"]
+[ext_resource type="Script" path="res://settings_screen.gd" id="1_rshgk"]
 [ext_resource type="Texture2D" uid="uid://beuyx8keoiymu" path="res://tank-game-settings.png" id="2_4lfhp"]
+[ext_resource type="Texture2D" uid="uid://e1xpuqmactei" path="res://menu-back-button-3.png" id="3_y66ju"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwf28"]
 
@@ -14,7 +16,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_knoef"]
 size = Vector2(680, 112.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7g5g"]
+size = Vector2(200, 40)
+
 [node name="SettingsScreen" type="Node2D"]
+script = ExtResource("1_rshgk")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -76,3 +82,14 @@ texture = ExtResource("2_4lfhp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Settings"]
 position = Vector2(960, 535.75)
 shape = SubResource("RectangleShape2D_knoef")
+
+[node name="BackButton" type="StaticBody2D" parent="."]
+metadata/back = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BackButton"]
+position = Vector2(1470, 1030)
+texture = ExtResource("3_y66ju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackButton"]
+position = Vector2(1470, 1030)
+shape = SubResource("RectangleShape2D_d7g5g")

@@ -17,6 +17,11 @@ func _process(delta):
 	if p2.direction_inputted and p2.rotation_inputted and p2.fire_inputted:
 		$P2Controls.hide()
 	
+	if menu.push_hint:
+		$PushHint.show()
+	else:
+		$PushHint.hide()
+	
 	if menu.play_hp > 0:
 		$PlayButton/Sprite2D.texture = load("res://menu-play-button-" + str(menu.play_hp) + ".png")
 	else:

@@ -13,6 +13,8 @@ var play_hp = 3
 var settings_hp = 3
 var credits_hp = 3
 var quit_hp = 3
+var back_hp = 3
+var push_hint = true
 
 var menus = [
 	["res://title_screen.tscn", Vector2(1, 1)],
@@ -48,6 +50,7 @@ func _menu_switch(delta, location, initial: bool):
 		settings_hp = 3
 		credits_hp = 3
 		quit_hp = 3
+		back_hp = 3
 		# Create new menu and position it in hierarchy
 		new_menu = load(menus[location][0]).instantiate()
 		new_menu.global_position.x = 1920
@@ -81,19 +84,27 @@ func _process(delta):
 	if not switching:
 		# Should the menu be switched?
 		if not switch_start:
-			# Who died
+			# What was pressed
 			if settings_hp <= 0:
 				switch_start = true
 				switching = true
 				selected_menu = 1
+				push_hint = false
 			elif credits_hp <= 0:
 				switch_start = true
 				switching = true
 				selected_menu = 2
+				push_hint = false
 			elif play_hp <= 0:
 				switch_start = true
 				switching = true
 				selected_menu = 3
+				push_hint = false
+			elif back_hp <= 0:
+				switch_start = true
+				switching = true
+				selected_menu = 0
+				push_hint = false
 		
 		if quit_hp <= 0:
 			get_tree().quit()
