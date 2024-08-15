@@ -14,6 +14,11 @@ var score = Vector2(0, 0)
 signal up_score(winner)
 
 var maps = [
+	["res://maps/map_8.tscn", "Simulation", Vector2(1, 1)],
+	["res://maps/map_6.tscn", "Empty", Vector2(1, 1)],
+	["res://maps/map_7.tscn", "Centre", Vector2(1, 1)],
+	["res://maps/map_5.tscn", "Square", Vector2(2, 2)],
+	["res://maps/map_9.tscn", "Choke Point", Vector2(1.5, 1.5)],
 	["res://maps/map_1.tscn", "Grasswall", Vector2(1, 1)],
 	["res://maps/map_2.tscn", "Grassierwall", Vector2(1, 1)],
 	["res://maps/map_3.tscn", "Grassiestwall", Vector2(1, 1)],
@@ -21,16 +26,26 @@ var maps = [
 ]
 
 var p1_spawns = [
-	Vector2(300, 540),
-	Vector2(150, 540),
-	Vector2(200, 540),
-	Vector2(580, 540),
+	Vector2(300, 540), #8
+	Vector2(200, 200), #6
+	Vector2(300, 540), #7
+	Vector2(580, 540), #5
+	Vector2(400, 540), #9
+	Vector2(300, 540), #1
+	Vector2(150, 540), #2
+	Vector2(200, 540), #3
+	Vector2(580, 540), #4
 ]
 var p2_spawns = [
-	Vector2(1620, 540),
-	Vector2(1770, 540),
-	Vector2(1720, 540),
-	Vector2(1340, 540),
+	Vector2(1620, 540), #8
+	Vector2(1720, 880), #6
+	Vector2(1620, 540), #7
+	Vector2(1340, 540), #5
+	Vector2(1520, 540), #9
+	Vector2(1620, 540), #1
+	Vector2(1770, 540), #2
+	Vector2(1720, 540), #3
+	Vector2(1340, 540), #4
 ]
 
 
