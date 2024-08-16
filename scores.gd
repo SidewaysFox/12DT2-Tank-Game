@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@onready var main = get_node("/root/Main/")
+@onready var global = get_node("/root/Global")
 var position1: Vector2
 var position2: Vector2
 var player: int
@@ -16,8 +16,8 @@ func _up_score(winner):
 
 
 func _process(delta):
-	%P1Label/P1Score.text = str(main.score.x)
-	%P2Label/P2Score.text = str(main.score.y)
+	%P1Label/P1Score.text = str(global.score.x)
+	%P2Label/P2Score.text = str(global.score.y)
 	
 	if active:
 		# Slide in
@@ -43,9 +43,9 @@ func _process(delta):
 func _on_timer_1_timeout():
 	# Add score
 	if player == 1:
-		main.score.x += 1
+		global.score.x += 1
 	else:
-		main.score.y += 1
+		global.score.y += 1
 	$Timer2.start(0.6)
 
 

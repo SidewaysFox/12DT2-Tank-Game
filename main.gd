@@ -1,6 +1,7 @@
 extends Node2D
 
 
+@onready var global = get_node("/root/Global")
 var next_map = 0
 var new_map
 var current_map
@@ -9,7 +10,6 @@ var switch_start = true
 var show_map_name = false
 var p1_hp = 100
 var p2_hp = 100
-var score = Vector2(0, 0)
 
 signal up_score(winner)
 
@@ -55,6 +55,7 @@ func _ready():
 	next_map += 1
 	current_map = new_map
 	show_map_name = false
+	$MatchTimer.start(30)
 
 
 func _map_switch(delta, initial: bool):
@@ -88,6 +89,8 @@ func _map_switch(delta, initial: bool):
 			current_map = new_map
 			p1_hp = 100
 			p2_hp = 100
+			$MatchTimer.start(30)
+			$CanvasLayer/TimerLabel.add_theme_color_override("font_color", Color(0.78, 0.78, 0.78))
 			switching = false
 
 
@@ -95,6 +98,7 @@ func _process(delta):
 	if not switching:
 		# Should the map be switched?
 		if not switch_start:
+			$CanvasLayer/TimerLabel.text = str(snapped($MatchTimer.time_left, 0.1))
 			# Who died
 			if p1_hp <= 0:
 				switch_start = true
@@ -117,3 +121,9 @@ func _process(delta):
 
 func _on_switch_wait_timeout():
 	switching = true
+
+
+func _out_of_time():
+	switch_start = true
+	$CanvasLayer/TimerLabel.add_theme_color_override("font_color", Color(1, 0.2, 0.2))
+	$SwitchWait.start(1)

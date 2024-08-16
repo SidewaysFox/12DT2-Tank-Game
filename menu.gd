@@ -26,13 +26,13 @@ var menus = [
 var p1_spawns = [
 	Vector2(300, 540),
 	Vector2(300, 540),
-	Vector2(600, 540),
+	Vector2(540, 540),
 	Vector2(300, 540),
 ]
 var p2_spawns = [
 	Vector2(1620, 540),
 	Vector2(1620, 540),
-	Vector2(1320, 540),
+	Vector2(1380, 540),
 	Vector2(1620, 540),
 ]
 
