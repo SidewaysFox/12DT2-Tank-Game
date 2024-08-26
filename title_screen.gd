@@ -4,6 +4,7 @@ extends Node2D
 @onready var menu = get_node("/root/Menu/")
 @onready var p1 = get_node("/root/Menu/TankP1Menu/")
 @onready var p2 = get_node("/root/Menu/TankP2Menu/")
+var repeat = 0
 
 
 func _process(delta):
@@ -41,3 +42,14 @@ func _process(delta):
 		$QuitButton/Sprite2D.texture = load("res://menu-quit-button-" + str(menu.quit_hp) + ".png")
 	else:
 		$QuitButton.hide()
+
+
+func _on_push_hint_flash_timeout():
+	if repeat <= 10:
+		if repeat % 2 == 0:
+			$PushHint.self_modulate = Color(1, 1, 1, 1)
+		else:
+			$PushHint.self_modulate = Color(1, 1, 1, 0.5)
+		repeat += 1
+	else:
+		$PushHintFlash.stop()

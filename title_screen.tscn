@@ -156,17 +156,18 @@ vertical_alignment = 1
 
 [node name="Text" type="Label" parent="P1Controls"]
 layout_mode = 0
+offset_left = -21.0
 offset_top = 90.0
-offset_right = 301.0
+offset_right = 321.0
 offset_bottom = 186.0
 theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_4pn3y")
 theme_override_font_sizes/font_size = 24
-text = "WASD - Movement
-ZX - Rotate turret
-Left shift - Fire"
+text = "W/A/S/D - Movement
+Z/X - Rotate turret either direction
+Left shift/C - Fire"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -186,8 +187,9 @@ vertical_alignment = 1
 
 [node name="Text" type="Label" parent="P2Controls"]
 layout_mode = 0
+offset_left = -39.0
 offset_top = 90.0
-offset_right = 301.0
+offset_right = 340.0
 offset_bottom = 186.0
 theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -195,7 +197,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_4pn3y")
 theme_override_font_sizes/font_size = 24
 text = "Arrow keys/IJKL - Movement
-NM/<> - Rotate turret
+NM/<> - Rotate turret either direction
 Space bar - Fire"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -229,15 +231,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PushHint" type="Label" parent="."]
-offset_left = 651.0
+offset_left = 620.0
 offset_top = 593.0
-offset_right = 1269.0
-offset_bottom = 639.0
+offset_right = 1300.0
+offset_bottom = 653.0
 theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_4pn3y")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 36
 text = "Shoot buttons three times to select them."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PushHintFlash" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="PushHintFlash" to="." method="_on_push_hint_flash_timeout"]

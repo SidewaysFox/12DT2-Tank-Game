@@ -55,7 +55,7 @@ func _ready():
 	next_map += 1
 	current_map = new_map
 	show_map_name = false
-	$MatchTimer.start(30)
+	$MatchTimer.start(60)
 
 
 func _map_switch(delta, initial: bool):
@@ -89,7 +89,7 @@ func _map_switch(delta, initial: bool):
 			current_map = new_map
 			p1_hp = 100
 			p2_hp = 100
-			$MatchTimer.start(30)
+			$MatchTimer.start(60)
 			$CanvasLayer/TimerLabel.add_theme_color_override("font_color", Color(0.78, 0.78, 0.78))
 			switching = false
 
