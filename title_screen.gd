@@ -10,8 +10,10 @@ var repeat = 0
 func _process(delta):
 	if p1.direction_inputted:
 		$P1Label.hide()
+		$Arrows1.hide()
 	if p2.direction_inputted:
 		$P2Label.hide()
+		$Arrows2.hide()
 	
 	if p1.direction_inputted and p1.rotation_inputted and p1.fire_inputted:
 		$P1Controls.hide()
@@ -48,8 +50,12 @@ func _on_push_hint_flash_timeout():
 	if repeat <= 10:
 		if repeat % 2 == 0:
 			$PushHint.self_modulate = Color(1, 1, 1, 1)
+			$Arrows1.self_modulate = Color(1, 1, 1, 1)
+			$Arrows2.self_modulate = Color(1, 1, 1, 1)
 		else:
 			$PushHint.self_modulate = Color(1, 1, 1, 0.5)
+			$Arrows1.self_modulate = Color(1, 1, 1, 0.5)
+			$Arrows2.self_modulate = Color(1, 1, 1, 0.5)
 		repeat += 1
 	else:
 		$PushHintFlash.stop()

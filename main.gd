@@ -59,6 +59,9 @@ func _ready():
 
 
 func _map_switch(delta, initial: bool):
+	print("--------")
+	print(new_map)
+	print(current_map)
 	if switch_start == true:
 		# Check if the map cycle needs to loop
 		if next_map == len(maps):
@@ -92,6 +95,9 @@ func _map_switch(delta, initial: bool):
 			$MatchTimer.start(60)
 			$CanvasLayer/TimerLabel.add_theme_color_override("font_color", Color(0.78, 0.78, 0.78))
 			switching = false
+	print(new_map)
+	print(current_map)
+	print("--------")
 
 
 func _process(delta):

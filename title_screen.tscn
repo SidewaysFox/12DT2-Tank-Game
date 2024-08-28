@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cufev5lggoewn"]
+[gd_scene load_steps=19 format=3 uid="uid://cufev5lggoewn"]
 
 [ext_resource type="Texture2D" uid="uid://bdqx77n4gvlx" path="res://bg-menu.png" id="1_v1486"]
 [ext_resource type="Script" path="res://title_screen.gd" id="1_y3y1n"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bonu5se1f6atc" path="res://menu-settings-button-3.png" id="4_klcpm"]
 [ext_resource type="Texture2D" uid="uid://eruij11303jp" path="res://menu-credits-button-3.png" id="5_h80j8"]
 [ext_resource type="Texture2D" uid="uid://beqikwievpkon" path="res://menu-quit-button-3.png" id="6_dq2nt"]
+[ext_resource type="Texture2D" uid="uid://bda6h5kw1el6k" path="res://movement-arrows.png" id="9_gvr4t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pncfk"]
 size = Vector2(200, 42)
@@ -166,7 +167,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_4pn3y")
 theme_override_font_sizes/font_size = 24
 text = "W/A/S/D - Movement
-Z/X - Rotate turret either direction
+Z/X - Rotate turret left and right
 Left shift/C - Fire"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -197,7 +198,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_4pn3y")
 theme_override_font_sizes/font_size = 24
 text = "Arrow keys/IJKL - Movement
-NM/<> - Rotate turret either direction
+NM/<> - Rotate turret left and right
 Space bar - Fire"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -247,5 +248,15 @@ vertical_alignment = 1
 [node name="PushHintFlash" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="Arrows1" type="Sprite2D" parent="."]
+position = Vector2(300, 540)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_gvr4t")
+
+[node name="Arrows2" type="Sprite2D" parent="."]
+position = Vector2(1620, 540)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_gvr4t")
 
 [connection signal="timeout" from="PushHintFlash" to="." method="_on_push_hint_flash_timeout"]
