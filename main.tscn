@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dxucwwqgmdwg"]
+[gd_scene load_steps=32 format=3 uid="uid://dxucwwqgmdwg"]
 
 [ext_resource type="PackedScene" uid="uid://blvqwt8eetv7f" path="res://tank_p1.tscn" id="1_3hx61"]
 [ext_resource type="Script" path="res://main.gd" id="1_5jxqc"]
@@ -18,6 +18,15 @@
 [ext_resource type="Texture2D" uid="uid://b8y78anmnubv1" path="res://menu-button.png" id="14_x31xn"]
 [ext_resource type="Texture2D" uid="uid://4y1ityinvdfe" path="res://menu-button-click.png" id="15_dein4"]
 [ext_resource type="Texture2D" uid="uid://dvho08qwr8m1w" path="res://menu-button-hover.png" id="16_4wdxl"]
+[ext_resource type="Texture2D" uid="uid://ccfmg1abuup81" path="res://alt-settings-volume-up.png" id="19_qn4js"]
+[ext_resource type="Texture2D" uid="uid://c0m1swcclxoei" path="res://alt-settings-volume-up-click.png" id="20_7r0wc"]
+[ext_resource type="Texture2D" uid="uid://r53fw1m3dhsb" path="res://alt-settings-volume-up-hover.png" id="21_7l0tx"]
+[ext_resource type="Texture2D" uid="uid://bgw5kkunqkpu6" path="res://alt-settings-volume-down.png" id="22_v5qop"]
+[ext_resource type="Texture2D" uid="uid://bs3hjhao6377w" path="res://alt-settings-volume-down-click.png" id="23_i755v"]
+[ext_resource type="Texture2D" uid="uid://bk1ru1vbflgsy" path="res://alt-settings-volume-down-hover.png" id="24_nqiue"]
+[ext_resource type="Texture2D" uid="uid://c764r1ipj0ef5" path="res://pause-back.png" id="25_evgxe"]
+[ext_resource type="Texture2D" uid="uid://qm4et00s5gjh" path="res://pause-back-click.png" id="26_iit38"]
+[ext_resource type="Texture2D" uid="uid://bki5tnws5tu5h" path="res://pause-back-hover.png" id="27_jnkry"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i7ivc"]
 shader = ExtResource("6_08qe4")
@@ -116,6 +125,7 @@ texture_normal = ExtResource("5_42dag")
 texture_pressed = ExtResource("5_q2ymr")
 
 [node name="Paused" type="Label" parent="CanvasLayer/PauseItems"]
+visible = false
 layout_mode = 0
 offset_left = 775.0
 offset_top = 150.0
@@ -159,6 +169,51 @@ texture_normal = ExtResource("14_x31xn")
 texture_pressed = ExtResource("15_dein4")
 texture_hover = ExtResource("16_4wdxl")
 
+[node name="AltSettings" type="Label" parent="CanvasLayer/PauseItems"]
+visible = false
+layout_mode = 0
+offset_left = 755.0
+offset_top = 150.0
+offset_right = 1165.0
+offset_bottom = 285.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_4nc84")
+theme_override_font_sizes/font_size = 96
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeUp" type="TextureButton" parent="CanvasLayer/PauseItems/AltSettings"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 250.0
+offset_right = 406.0
+offset_bottom = 370.0
+texture_normal = ExtResource("19_qn4js")
+texture_pressed = ExtResource("20_7r0wc")
+texture_hover = ExtResource("21_7l0tx")
+
+[node name="VolumeDown" type="TextureButton" parent="CanvasLayer/PauseItems/AltSettings"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 400.0
+offset_right = 406.0
+offset_bottom = 521.0
+texture_normal = ExtResource("22_v5qop")
+texture_pressed = ExtResource("23_i755v")
+texture_hover = ExtResource("24_nqiue")
+
+[node name="Back" type="TextureButton" parent="CanvasLayer/PauseItems/AltSettings"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 550.0
+offset_right = 406.0
+offset_bottom = 670.0
+texture_normal = ExtResource("25_evgxe")
+texture_pressed = ExtResource("26_iit38")
+texture_hover = ExtResource("27_jnkry")
+
 [node name="TimerLabel" type="Label" parent="CanvasLayer"]
 offset_left = 907.0
 offset_top = 50.0
@@ -183,3 +238,6 @@ position = Vector2(960, 540)
 [connection signal="pressed" from="CanvasLayer/PauseItems/Paused/Resume" to="CanvasLayer/PauseItems" method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseItems/Paused/Settings" to="CanvasLayer/PauseItems" method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseItems/Paused/Menu" to="CanvasLayer/PauseItems" method="_on_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseItems/AltSettings/VolumeUp" to="CanvasLayer/PauseItems" method="_on_volume_up_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseItems/AltSettings/VolumeDown" to="CanvasLayer/PauseItems" method="_on_volume_down_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseItems/AltSettings/Back" to="CanvasLayer/PauseItems" method="_on_back_pressed"]

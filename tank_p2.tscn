@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c14nyiy2m3il1"]
+[gd_scene load_steps=8 format=3 uid="uid://c14nyiy2m3il1"]
 
 [ext_resource type="Script" path="res://tank_p2.gd" id="1_uoapu"]
 [ext_resource type="Texture2D" uid="uid://dysqx8y2hbe14" path="res://p2-tank-hull.png" id="2_7cclx"]
 [ext_resource type="PackedScene" uid="uid://cb5h1ojexjid8" path="res://projectile.tscn" id="2_t8388"]
 [ext_resource type="Texture2D" uid="uid://djdlxtkrbvbsl" path="res://p2-tank-turret.png" id="3_gafsr"]
+[ext_resource type="FontFile" uid="uid://fy4as8fu8sms" path="res://DINAlternate-Bold.ttf" id="5_enxdt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgk7y"]
 radius = 29.0
@@ -57,4 +58,22 @@ step = 1.0
 allow_lesser = true
 show_percentage = false
 
+[node name="Reload" type="Timer" parent="."]
+one_shot = true
+
+[node name="Ammo" type="Label" parent="."]
+offset_left = -50.0
+offset_top = 36.0
+offset_right = 50.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_enxdt")
+theme_override_font_sizes/font_size = 18
+text = "RELOAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="DamageEffect" to="." method="_on_damage_effect_timeout"]
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]

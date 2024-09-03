@@ -29,3 +29,8 @@ func _process(delta):
 
 func _on_damage_effect_timeout():
 	$Hull.self_modulate = Color(1, 1, 1)
+
+
+func _on_reload_timeout() -> void:
+	main.reloading2 = false
+	main.ammo2 = main.max_ammo

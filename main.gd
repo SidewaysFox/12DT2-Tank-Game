@@ -10,6 +10,12 @@ var switch_start = true
 var show_map_name = false
 var p1_hp = 100
 var p2_hp = 100
+var max_ammo
+var ammo1
+var ammo2
+var reload
+var reloading1 = false
+var reloading2 = false
 
 signal up_score(winner)
 
@@ -55,7 +61,14 @@ func _ready():
 	next_map += 1
 	current_map = new_map
 	show_map_name = false
-	$MatchTimer.start(60)
+	if global.timer_on:
+		$MatchTimer.start(global.timer_time)
+	else:
+		$CanvasLayer/TimerLabel.hide()
+	max_ammo = global.max_ammo
+	ammo1 = global.max_ammo
+	ammo2 = global.max_ammo
+	reload = global.reload
 
 
 func _map_switch(delta, initial: bool):
@@ -92,7 +105,10 @@ func _map_switch(delta, initial: bool):
 			current_map = new_map
 			p1_hp = 100
 			p2_hp = 100
-			$MatchTimer.start(60)
+			ammo1 = global.max_ammo
+			ammo2 = global.max_ammo
+			if global.timer_on:
+				$MatchTimer.start(global.timer_time)
 			$CanvasLayer/TimerLabel.add_theme_color_override("font_color", Color(0.78, 0.78, 0.78))
 			switching = false
 	print(new_map)

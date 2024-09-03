@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 @onready var menu = get_node("/root/Menu/")
+@onready var global = get_node("/root/Global/")
 @export var projectile_speed = 100000
 var direction: Vector2
 
@@ -36,4 +37,27 @@ func _on_area_2d_body_entered(body):
 			menu.quit_hp -= 1
 		if body.has_meta("back"):
 			menu.back_hp -= 1
+		if body.has_meta("volume_up"):
+			if global.volume < 91:
+				global.volume += 10
+		if body.has_meta("volume_down"):
+			if global.volume > 9:
+				global.volume -= 10
+		if body.has_meta("timer"):
+			if global.timer_on:
+				global.timer_on = false
+			else:
+				global.timer_on = true
+		if body.has_meta("time_up"):
+			if global.timer_time < 996:
+				global.timer_time += 5
+		if body.has_meta("time_down"):
+			if global.timer_time > 9:
+				global.timer_time -= 5
+		if body.has_meta("ammo_up"):
+			if global.max_ammo < 999:
+				global.max_ammo += 1
+		if body.has_meta("ammo_down"):
+			if global.max_ammo > 0:
+				global.max_ammo -= 1
 		queue_free()

@@ -1,9 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvranrson05cr"]
+[gd_scene load_steps=19 format=3 uid="uid://bvranrson05cr"]
 
 [ext_resource type="Texture2D" uid="uid://bdqx77n4gvlx" path="res://bg-menu.png" id="1_4nh77"]
 [ext_resource type="Script" path="res://settings_screen.gd" id="1_rshgk"]
 [ext_resource type="Texture2D" uid="uid://beuyx8keoiymu" path="res://tank-game-settings.png" id="2_4lfhp"]
 [ext_resource type="Texture2D" uid="uid://e1xpuqmactei" path="res://menu-back-button-3.png" id="3_y66ju"]
+[ext_resource type="Texture2D" uid="uid://dghg3h1swxkh7" path="res://volume-up-button.png" id="5_qqd1u"]
+[ext_resource type="Texture2D" uid="uid://b1ucbscfocetw" path="res://volume-down-button.png" id="6_txbps"]
+[ext_resource type="FontFile" uid="uid://fy4as8fu8sms" path="res://DINAlternate-Bold.ttf" id="7_xcqr0"]
+[ext_resource type="Texture2D" uid="uid://bb5ivxbo73qcd" path="res://timer-on.png" id="8_361jl"]
+[ext_resource type="Texture2D" uid="uid://fd3gwd2djbst" path="res://time-up.png" id="9_qykfw"]
+[ext_resource type="Texture2D" uid="uid://5iptnl1uxok1" path="res://time-down.png" id="10_lk5j6"]
+[ext_resource type="Texture2D" uid="uid://cbmgb0tofbyyp" path="res://ammo-up.png" id="11_0tcf0"]
+[ext_resource type="Texture2D" uid="uid://d1uh1ky3tv3if" path="res://ammo-down.png" id="12_6xcdl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwf28"]
 
@@ -84,12 +92,128 @@ position = Vector2(960, 535.75)
 shape = SubResource("RectangleShape2D_knoef")
 
 [node name="BackButton" type="StaticBody2D" parent="."]
+position = Vector2(1600, 1030)
 metadata/back = true
 
 [node name="Sprite2D" type="Sprite2D" parent="BackButton"]
-position = Vector2(1470, 1030)
 texture = ExtResource("3_y66ju")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BackButton"]
-position = Vector2(1470, 1030)
 shape = SubResource("RectangleShape2D_d7g5g")
+
+[node name="VolumeUpButton" type="StaticBody2D" parent="."]
+position = Vector2(1200, 1030)
+metadata/volume_up = true
+
+[node name="Sprite2D" type="Sprite2D" parent="VolumeUpButton"]
+texture = ExtResource("5_qqd1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VolumeUpButton"]
+shape = SubResource("RectangleShape2D_d7g5g")
+
+[node name="VolumeDownButton" type="StaticBody2D" parent="."]
+position = Vector2(720, 1030)
+metadata/volume_down = true
+
+[node name="Sprite2D" type="Sprite2D" parent="VolumeDownButton"]
+texture = ExtResource("6_txbps")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VolumeDownButton"]
+shape = SubResource("RectangleShape2D_d7g5g")
+
+[node name="Volume" type="Label" parent="."]
+offset_left = 820.0
+offset_top = 958.0
+offset_right = 1100.0
+offset_bottom = 1050.0
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_xcqr0")
+theme_override_font_sizes/font_size = 36
+text = "Volume:
+100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerOnOff" type="StaticBody2D" parent="."]
+position = Vector2(960, 50)
+metadata/timer = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TimerOnOff"]
+texture = ExtResource("8_361jl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimerOnOff"]
+shape = SubResource("RectangleShape2D_d7g5g")
+
+[node name="TimeUp" type="StaticBody2D" parent="."]
+position = Vector2(1200, 50)
+metadata/time_up = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TimeUp"]
+texture = ExtResource("9_qykfw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimeUp"]
+shape = SubResource("RectangleShape2D_d7g5g")
+
+[node name="TimeDown" type="StaticBody2D" parent="."]
+position = Vector2(720, 50)
+metadata/time_down = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TimeDown"]
+texture = ExtResource("10_lk5j6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimeDown"]
+shape = SubResource("RectangleShape2D_d7g5g")
+
+[node name="TimerTime" type="Label" parent="."]
+offset_left = 820.0
+offset_top = 71.0
+offset_right = 1100.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_xcqr0")
+theme_override_font_sizes/font_size = 36
+text = "Time:
+60"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AmmoUp" type="StaticBody2D" parent="."]
+position = Vector2(50, 420)
+rotation = 4.71239
+metadata/ammo_up = true
+
+[node name="Sprite2D" type="Sprite2D" parent="AmmoUp"]
+texture = ExtResource("11_0tcf0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AmmoUp"]
+shape = SubResource("RectangleShape2D_d7g5g")
+
+[node name="AmmoDown" type="StaticBody2D" parent="."]
+position = Vector2(50, 660)
+rotation = 4.71239
+metadata/ammo_down = true
+
+[node name="Sprite2D" type="Sprite2D" parent="AmmoDown"]
+texture = ExtResource("12_6xcdl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AmmoDown"]
+shape = SubResource("RectangleShape2D_d7g5g")
+
+[node name="AmmoCount" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 494.0
+offset_right = 295.0
+offset_bottom = 586.0
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_xcqr0")
+theme_override_font_sizes/font_size = 36
+text = "Ammo:
+20"
+horizontal_alignment = 1
+vertical_alignment = 1

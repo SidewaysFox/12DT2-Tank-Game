@@ -70,7 +70,6 @@ func _menu_switch(delta, location, initial: bool):
 			new_menu.global_position.x = 0
 			$Camera2D.zoom = menus[selected_menu][1]
 			# Delete previous menu and set the new current menu
-			selected_menu += 1
 			current_menu.queue_free()
 			current_menu = new_menu
 			p1_hp = 100

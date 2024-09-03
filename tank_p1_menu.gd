@@ -58,6 +58,7 @@ func _on_damage_effect_timeout():
 
 
 func _on_respawn_timeout():
+	print(menu.selected_menu)
 	position = menu.p1_spawns[menu.selected_menu]
 	menu.p1_hp = 100
 	show()

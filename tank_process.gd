@@ -11,11 +11,14 @@ const TURRET_ROTATE_SPEED = 3.0
 const SPREAD = 1.0
 const RELOAD_TIME = 5.0
 var current_accel = Vector2(0.0, 0.0)
+var kapow
 
 
 func _tank_process(delta, id, up, down, left, right, rotate_left, \
 rotate_right, fire):
 	velocity = Vector2.ZERO
+	
+	kapow = fire
 	
 	# Make sure maps aren't switching
 	if not main.switching and not scores.active:
@@ -60,12 +63,22 @@ rotate_right, fire):
 			$Turret.rotation -= TURRET_ROTATE_SPEED * delta
 		
 		# Firing
-		if Input.is_action_just_pressed(fire):
-			var new_projectile = projectile.instantiate()
-			new_projectile.global_position = $Turret/ProjectileSpawn.global_position
-			new_projectile.rotation_degrees = $Turret.global_rotation_degrees \
-			- randf_range(90 - SPREAD, 90 + SPREAD)
-			add_sibling(new_projectile)
+		if id == 1:
+			if main.ammo1 > 0:
+				_trigger(1)
+				$Ammo.text = str(main.ammo1)
+			elif not main.reloading1:
+				$Reload.start(main.reload)
+				$Ammo.text = "RELOADING"
+				main.reloading1 = true
+		else:
+			if main.ammo2 > 0:
+				_trigger(2)
+				$Ammo.text = str(main.ammo2)
+			elif not main.reloading2:
+				$Reload.start(main.reload)
+				$Ammo.text = "RELOADING"
+				main.reloading2 = true
 	
 	# Maps are switching
 	elif main.switching and not scores.active:
@@ -78,3 +91,16 @@ rotate_right, fire):
 
 func _draw():
 	draw_line(Vector2(0,0), to_local($Turret/RayCast2D.get_collision_point()), Color(255, 255, 255, 0.5), 3.0)
+
+
+func _trigger(id):
+	if Input.is_action_just_pressed(kapow):
+		var new_projectile = projectile.instantiate()
+		new_projectile.global_position = $Turret/ProjectileSpawn.global_position
+		new_projectile.rotation_degrees = $Turret.global_rotation_degrees \
+		- randf_range(90 - SPREAD, 90 + SPREAD)
+		add_sibling(new_projectile)
+		if id == 1:
+			main.ammo1 -= 1
+		else:
+			main.ammo2 -= 1
