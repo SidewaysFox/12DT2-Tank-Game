@@ -2,6 +2,7 @@ extends Node2D
 
 
 @onready var global = get_node("/root/Global")
+var particle = GPUParticles2D
 var position1: Vector2
 var position2: Vector2
 var player: int

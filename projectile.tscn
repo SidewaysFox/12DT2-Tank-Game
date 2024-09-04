@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb5h1ojexjid8"]
+[gd_scene load_steps=5 format=3 uid="uid://cb5h1ojexjid8"]
 
 [ext_resource type="Script" path="res://projectile.gd" id="1_7d8sh"]
+[ext_resource type="PackedScene" uid="uid://ccd11nxxncqlt" path="res://silly_billy_parpicles.tscn" id="2_ujnv6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaayj"]
 size = Vector2(20, 10)
@@ -12,6 +13,7 @@ size = Vector2(24, 12)
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_7d8sh")
+particles = ExtResource("2_ujnv6")
 metadata/projectile = true
 
 [node name="BodyShape" type="CollisionShape2D" parent="."]
