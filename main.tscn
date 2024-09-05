@@ -49,9 +49,11 @@ process_mode = 1
 script = ExtResource("1_5jxqc")
 
 [node name="TankP1" parent="." instance=ExtResource("1_3hx61")]
+z_index = 1
 position = Vector2(300, 540)
 
 [node name="TankP2" parent="." instance=ExtResource("2_iycc3")]
+z_index = 1
 position = Vector2(1620, 540)
 
 [node name="Scores" parent="." instance=ExtResource("4_pqssx")]

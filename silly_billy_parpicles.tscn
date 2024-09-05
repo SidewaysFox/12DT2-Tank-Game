@@ -13,7 +13,7 @@ curve = SubResource("Curve_s713c")
 particle_flag_disable_z = true
 inherit_velocity_ratio = 1.0
 spread = 15.0
-initial_velocity_min = 250.0
+initial_velocity_min = 300.0
 initial_velocity_max = 500.0
 gravity = Vector3(0, 0, 0)
 damping_min = 250.0
@@ -28,7 +28,7 @@ amount = 10
 process_material = SubResource("ParticleProcessMaterial_i2ev2")
 lifetime = 7.0
 explosiveness = 1.0
-visibility_rect = Rect2(7.38191, -67.4574, 468.595, 142.822)
+visibility_rect = Rect2(-1, -87.6418, 449.57, 185.373)
 script = ExtResource("1_1insc")
 
 [node name="Timer" type="Timer" parent="."]
