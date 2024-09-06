@@ -7,7 +7,7 @@ extends Node2D
 var repeat = 0
 
 
-func _process(delta):
+func _process(_delta):
 	if p1.direction_inputted:
 		$P1Label.hide()
 		$Arrows1.hide()

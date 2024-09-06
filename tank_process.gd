@@ -4,6 +4,7 @@ class_name TankProcess extends CharacterBody2D
 @onready var main = get_node("/root/Main/")
 @onready var scores = get_node("/root/Main/Scores/")
 @export var projectile: PackedScene
+@export var firing_particles: PackedScene
 const MOVE_SPEED = 400.0
 const ACCELERATION = Vector2(0.05, 0.05)
 const FRICTION = 0.02
@@ -17,7 +18,6 @@ var kapow
 func _tank_process(delta, id, up, down, left, right, rotate_left, \
 rotate_right, fire):
 	velocity = Vector2.ZERO
-	
 	kapow = fire
 	
 	# Make sure maps aren't switching
@@ -96,10 +96,14 @@ func _draw():
 func _trigger(id):
 	if Input.is_action_just_pressed(kapow):
 		var new_projectile = projectile.instantiate()
+		var new_particles = firing_particles.instantiate()
 		new_projectile.global_position = $Turret/ProjectileSpawn.global_position
 		new_projectile.rotation_degrees = $Turret.global_rotation_degrees \
 		- randf_range(90 - SPREAD, 90 + SPREAD)
+		new_particles.global_position = $Turret/ProjectileSpawn.global_position
+		new_particles.rotation_degrees = $Turret.global_rotation_degrees - 90
 		add_sibling(new_projectile)
+		add_sibling(new_particles)
 		if id == 1:
 			main.ammo1 -= 1
 		else:

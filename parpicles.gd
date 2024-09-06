@@ -5,15 +5,10 @@ extends GPUParticles2D
 @onready var scores = get_node("/root/Main/Scores/")
 
 
-func _ready() -> void:
-	print("emitted")
-
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if main.switching and not scores.active:
 		_on_finished()
 
 
 func _on_finished() -> void:
-	print("freed")
 	queue_free()

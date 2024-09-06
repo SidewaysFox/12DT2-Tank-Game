@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://didj57lbr5qjw"]
+
+[ext_resource type="Script" path="res://parpicles.gd" id="1_1vqe4"]
+
+[sub_resource type="Curve" id="Curve_y5vuy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6gv3j"]
+curve = SubResource("Curve_y5vuy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ytt0c"]
+particle_flag_disable_z = true
+angle_min = 270.0
+angle_max = 270.0
+spread = 25.0
+initial_velocity_min = 400.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 0, 0)
+damping_min = 250.0
+damping_max = 400.0
+scale_min = 3.0
+scale_max = 6.0
+color = Color(1, 0.784314, 0, 1)
+alpha_curve = SubResource("CurveTexture_6gv3j")
+
+[node name="FiringParticles" type="GPUParticles2D"]
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_ytt0c")
+lifetime = 0.6
+explosiveness = 1.0
+visibility_rect = Rect2(-1, -155.046, 428.229, 283.256)
+trail_enabled = true
+trail_lifetime = 0.05
+script = ExtResource("1_1vqe4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+autostart = true
+
+[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

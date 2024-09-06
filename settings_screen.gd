@@ -7,7 +7,7 @@ extends Node2D
 @onready var timeroff = preload("res://timer-off.png")
 
 
-func _process(delta):
+func _process(_delta):
 	if menu.back_hp > 0:
 		$BackButton/Sprite2D.texture = load("res://menu-back-button-" + str(menu.back_hp) + ".png")
 	else:

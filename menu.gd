@@ -44,7 +44,7 @@ func _ready():
 	current_menu = new_menu
 
 
-func _menu_switch(delta, location, initial: bool):
+func _menu_switch(_delta, location, initial: bool):
 	if switch_start == true:
 		play_hp = 3
 		settings_hp = 3

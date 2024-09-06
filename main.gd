@@ -71,7 +71,7 @@ func _ready():
 	reload = global.reload
 
 
-func _map_switch(delta, initial: bool):
+func _map_switch(_delta, initial: bool):
 	print("--------")
 	print(new_map)
 	print(current_map)

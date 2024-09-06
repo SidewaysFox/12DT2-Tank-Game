@@ -16,7 +16,7 @@ func _up_score(winner):
 	slide = 1
 
 
-func _process(delta):
+func _process(_delta):
 	%P1Label/P1Score.text = str(global.score.x)
 	%P2Label/P2Score.text = str(global.score.y)
 	
