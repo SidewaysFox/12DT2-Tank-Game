@@ -2,6 +2,7 @@ extends TankProcess
 
 
 var hp2_check = 100
+var explosion2 = false
 
 
 func _ready():
@@ -15,8 +16,14 @@ func _process(delta):
 	# Has died?
 	if main.p2_hp <= 0:
 		hide()
+		if not explosion2:
+			var new_particles = death_particles.instantiate()
+			new_particles.global_position = global_position
+			add_sibling(new_particles)
+			explosion2 = true
 	else:
 		show()
+		explosion2 = false
 	
 	# Has taken damage?
 	if hp2_check != main.p2_hp:

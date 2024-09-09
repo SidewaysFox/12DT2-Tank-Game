@@ -5,6 +5,7 @@ class_name TankProcess extends CharacterBody2D
 @onready var scores = get_node("/root/Main/Scores/")
 @export var projectile: PackedScene
 @export var firing_particles: PackedScene
+@export var death_particles: PackedScene
 const MOVE_SPEED = 400.0
 const ACCELERATION = Vector2(0.05, 0.05)
 const FRICTION = 0.02

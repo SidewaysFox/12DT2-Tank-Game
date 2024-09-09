@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://blvqwt8eetv7f"]
+[gd_scene load_steps=10 format=3 uid="uid://blvqwt8eetv7f"]
 
 [ext_resource type="Texture2D" uid="uid://4s8qkxttuoht" path="res://p1-tank-hull.png" id="1_ifaqg"]
 [ext_resource type="Script" path="res://tank_p1.gd" id="1_kqcbu"]
 [ext_resource type="PackedScene" uid="uid://cb5h1ojexjid8" path="res://projectile.tscn" id="2_e32cb"]
 [ext_resource type="Texture2D" uid="uid://ct3blvyt43y4f" path="res://p1-tank-turret.png" id="2_sslr7"]
 [ext_resource type="PackedScene" uid="uid://didj57lbr5qjw" path="res://firing_particles.tscn" id="3_304rl"]
+[ext_resource type="PackedScene" uid="uid://dcrn6hcviuiyd" path="res://death_particles.tscn" id="4_56t31"]
 [ext_resource type="FontFile" uid="uid://fy4as8fu8sms" path="res://DINAlternate-Bold.ttf" id="5_cyuvm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgk7y"]
@@ -18,6 +19,7 @@ motion_mode = 1
 script = ExtResource("1_kqcbu")
 projectile = ExtResource("2_e32cb")
 firing_particles = ExtResource("3_304rl")
+death_particles = ExtResource("4_56t31")
 metadata/p1 = true
 
 [node name="Hull" type="Sprite2D" parent="."]
