@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://r5xpv02nbhc7"]
+[gd_scene load_steps=12 format=3 uid="uid://r5xpv02nbhc7"]
 
 [ext_resource type="Texture2D" uid="uid://bdqx77n4gvlx" path="res://bg-menu.png" id="1_njs4n"]
 [ext_resource type="Script" path="res://credits_screen.gd" id="1_w0jnp"]
 [ext_resource type="Texture2D" uid="uid://cq3b0kvqcxy0d" path="res://tank-game-credits.png" id="2_vd6kc"]
 [ext_resource type="Texture2D" uid="uid://e1xpuqmactei" path="res://menu-back-button-3.png" id="4_jlylf"]
+[ext_resource type="FontFile" uid="uid://fy4as8fu8sms" path="res://DINAlternate-Bold.ttf" id="5_hs415"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwf28"]
 
@@ -94,3 +95,31 @@ texture = ExtResource("4_jlylf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BackButton"]
 position = Vector2(960, 775)
 shape = SubResource("RectangleShape2D_6itef")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 702.0
+offset_top = 360.0
+offset_right = 1218.0
+offset_bottom = 417.0
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_hs415")
+theme_override_font_sizes/font_size = 48
+text = "Developed by Ben Whaley"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 702.0
+offset_top = 650.0
+offset_right = 1218.0
+offset_bottom = 707.0
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_hs415")
+theme_override_font_sizes/font_size = 36
+text = "Tested by friends"
+horizontal_alignment = 1
+vertical_alignment = 1

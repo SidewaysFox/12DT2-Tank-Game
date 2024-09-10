@@ -1,10 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb5h1ojexjid8"]
+[gd_scene load_steps=7 format=3 uid="uid://cb5h1ojexjid8"]
 
 [ext_resource type="Script" path="res://projectile.gd" id="1_7d8sh"]
 [ext_resource type="PackedScene" uid="uid://ccd11nxxncqlt" path="res://silly_billy_parpicles.tscn" id="2_ujnv6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaayj"]
 size = Vector2(20, 10)
+
+[sub_resource type="Gradient" id="Gradient_mmm46"]
+colors = PackedColorArray(0, 0, 0, 0, 0.784314, 0.392157, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0ss70"]
+gradient = SubResource("Gradient_mmm46")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ss6v"]
 size = Vector2(24, 12)
@@ -26,6 +32,14 @@ offset_right = 10.0
 offset_bottom = 5.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="Trail" type="TextureRect" parent="."]
+offset_left = -60.0
+offset_top = -5.0
+offset_right = -10.0
+offset_bottom = 5.0
+texture = SubResource("GradientTexture1D_0ss70")
+expand_mode = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 metadata/projectile = true
