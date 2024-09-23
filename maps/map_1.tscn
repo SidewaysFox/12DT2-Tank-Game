@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6rfrvhofkvrb"]
 
+[ext_resource type="Texture2D" uid="uid://bjewtj3eh7wvb" path="res://bg-1-revised-another-time.png" id="1_dgf7d"]
 [ext_resource type="PackedScene" uid="uid://6yuv6hj06bs7" path="res://wall.tscn" id="1_hrnme"]
-[ext_resource type="Texture2D" uid="uid://d06rpxjpx8ixy" path="res://bg-1.png" id="1_t5d2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ll8u"]
 
@@ -15,7 +15,7 @@
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
-texture = ExtResource("1_t5d2s")
+texture = ExtResource("1_dgf7d")
 
 [node name="OuterWall" type="StaticBody2D" parent="."]
 
