@@ -1,6 +1,7 @@
 class_name TankProcess extends CharacterBody2D
 
 
+@onready var global = get_node("/root/Global/")
 @onready var main = get_node("/root/Main/")
 @onready var scores = get_node("/root/Main/Scores/")
 @export var projectile: PackedScene
@@ -14,6 +15,16 @@ const SPREAD = 1.0
 const RELOAD_TIME = 5.0
 var current_accel = Vector2(0.0, 0.0)
 var kapow
+var colours = [
+	Color(1,0.3137,0,0.9176),
+	Color(0,0.3137,1,0.9176),
+	Color(0,1,0.3137,0.9176),
+	Color(1,1,0.3137,0.9176),
+	Color(0.7843,0.7843,0.7843,0.9176),
+	Color(0.3137,0,1,0.9176),
+	Color(1,0,0.3137,0.9176),
+]
+
 
 
 func _tank_process(delta, id, up, down, left, right, rotate_left, \

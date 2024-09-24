@@ -1,6 +1,7 @@
 class_name MenuTankProcess extends CharacterBody2D
 
 
+@onready var global = get_node("/root/Global/")
 @onready var menu = get_node("/root/Menu/")
 @export var projectile: PackedScene
 const MOVE_SPEED = 400.0
@@ -10,6 +11,15 @@ const TURRET_ROTATE_SPEED = 3.0
 const SPREAD = 1.0
 const RELOAD_TIME = 5.0
 var current_accel = Vector2(0.0, 0.0)
+var colours = [
+	Color(1,0.3137,0,0.9176),
+	Color(0,0.3137,1,0.9176),
+	Color(0,1,0.3137,0.9176),
+	Color(1,1,0.3137,0.9176),
+	Color(0.7843,0.7843,0.7843,0.9176),
+	Color(0.3137,0,1,0.9176),
+	Color(1,0,0.3137,0.9176),
+]
 
 
 func _tank_process(delta, id, up, down, left, right, rotate_left, \
@@ -61,6 +71,7 @@ rotate_right, fire):
 			new_projectile.global_position = $Turret/ProjectileSpawn.global_position
 			new_projectile.rotation_degrees = $Turret.global_rotation_degrees \
 			- randf_range(90 - SPREAD, 90 + SPREAD)
+			new_projectile.origin = id
 			add_sibling(new_projectile)
 	
 	# Maps are switching

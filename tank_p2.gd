@@ -7,6 +7,9 @@ var explosion2 = false
 
 func _ready():
 	position = main.p2_spawns[main.next_map]
+	$Hull.texture = load("res://p" + str(global.p2_colour) + "-tank-hull.png")
+	$Turret.texture = load("res://p" + str(global.p2_colour) + "-tank-turret.png")
+	$HealthBar.modulate = colours[global.p2_colour - 1]
 
 
 func _process(delta):

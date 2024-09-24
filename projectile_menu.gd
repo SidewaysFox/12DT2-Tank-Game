@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var global = get_node("/root/Global/")
 @export var projectile_speed = 100000
 var direction: Vector2
+var origin: int
 
 
 func _ready():
@@ -60,4 +61,14 @@ func _on_area_2d_body_entered(body):
 		if body.has_meta("ammo_down"):
 			if global.max_ammo > 0:
 				global.max_ammo -= 1
+		if body.has_meta("colour") and origin == 1:
+			if global.p1_colour < 7:
+				global.p1_colour += 1
+			else:
+				global.p1_colour = 1
+		if body.has_meta("colour") and origin == 2:
+			if global.p2_colour < 7:
+				global.p2_colour += 1
+			else:
+				global.p2_colour = 1
 		queue_free()

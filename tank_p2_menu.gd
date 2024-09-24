@@ -16,6 +16,10 @@ func _process(delta):
 	_tank_process(delta, 2, "p2_up", "p2_down", "p2_left", "p2_right", \
 	"p2_rotate_left", "p2_rotate_right", "p2_fire")
 	
+	$Hull.texture = load("res://p" + str(global.p2_colour) + "-tank-hull.png")
+	$Turret.texture = load("res://p" + str(global.p2_colour) + "-tank-turret.png")
+	$HealthBar.modulate = colours[global.p2_colour - 1]
+	
 	if Input.is_action_just_pressed("p2_up") or Input.is_action_just_pressed("p2_down") or \
 	Input.is_action_just_pressed("p2_left") or Input.is_action_just_pressed("p2_right"):
 		direction_inputted = true

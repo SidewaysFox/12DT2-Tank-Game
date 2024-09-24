@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bvranrson05cr"]
+[gd_scene load_steps=20 format=3 uid="uid://bvranrson05cr"]
 
 [ext_resource type="Texture2D" uid="uid://bdqx77n4gvlx" path="res://bg-menu.png" id="1_4nh77"]
 [ext_resource type="Script" path="res://settings_screen.gd" id="1_rshgk"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://5iptnl1uxok1" path="res://time-down.png" id="10_lk5j6"]
 [ext_resource type="Texture2D" uid="uid://cbmgb0tofbyyp" path="res://ammo-up.png" id="11_0tcf0"]
 [ext_resource type="Texture2D" uid="uid://d1uh1ky3tv3if" path="res://ammo-down.png" id="12_6xcdl"]
+[ext_resource type="Texture2D" uid="uid://cawwc7mlrxn12" path="res://colour-button.png" id="13_r6ipg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwf28"]
 
@@ -217,3 +218,14 @@ text = "Ammo:
 20"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Colour" type="StaticBody2D" parent="."]
+position = Vector2(1870, 540)
+rotation = 1.5708
+metadata/colour = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Colour"]
+texture = ExtResource("13_r6ipg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colour"]
+shape = SubResource("RectangleShape2D_d7g5g")
