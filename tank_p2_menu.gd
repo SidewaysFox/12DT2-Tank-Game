@@ -6,6 +6,7 @@ var respawning = false
 var direction_inputted = false
 var rotation_inputted = false
 var fire_inputted = false
+var explosion2 = false
 
 
 func _ready():
@@ -39,8 +40,14 @@ func _process(delta):
 				hide()
 				respawning = true
 				$Respawn.start(3)
+				if not explosion2:
+					var new_particles = death_particles.instantiate()
+					new_particles.global_position = global_position
+					add_sibling(new_particles)
+					explosion2 = true
 			else:
 				show()
+				explosion2 = false
 		else:
 			$CollisionShape2D.disabled = true
 			$Area2D/CollisionShape2D.disabled = true

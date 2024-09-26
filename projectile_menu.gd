@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var menu = get_node("/root/Menu/")
 @onready var global = get_node("/root/Global/")
 @export var projectile_speed = 100000
+@export var particles: PackedScene
 var direction: Vector2
 var origin: int
 
@@ -71,4 +72,8 @@ func _on_area_2d_body_entered(body):
 				global.p2_colour += 1
 			else:
 				global.p2_colour = 1
+		var new = particles.instantiate()
+		new.global_rotation = global_rotation
+		new.global_position = global_position
+		add_sibling(new)
 		queue_free()

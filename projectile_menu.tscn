@@ -1,9 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbscirgbc23sn"]
+[gd_scene load_steps=7 format=3 uid="uid://bbscirgbc23sn"]
 
 [ext_resource type="Script" path="res://projectile_menu.gd" id="1_rpn4u"]
+[ext_resource type="PackedScene" uid="uid://cq6qcg2jvfv3o" path="res://silly_billy_menu_parpicles.tscn" id="2_c0ssd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaayj"]
 size = Vector2(20, 10)
+
+[sub_resource type="Gradient" id="Gradient_mmm46"]
+colors = PackedColorArray(0, 0, 0, 0, 0.784314, 0.392157, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rmqtu"]
+gradient = SubResource("Gradient_mmm46")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ss6v"]
 size = Vector2(24, 12)
@@ -11,6 +18,7 @@ size = Vector2(24, 12)
 [node name="Projectile" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_rpn4u")
+particles = ExtResource("2_c0ssd")
 metadata/projectile = true
 
 [node name="BodyShape" type="CollisionShape2D" parent="."]
@@ -23,6 +31,14 @@ offset_right = 10.0
 offset_bottom = 5.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="Trail" type="TextureRect" parent="."]
+offset_left = -60.0
+offset_top = -5.0
+offset_right = -10.0
+offset_bottom = 5.0
+texture = SubResource("GradientTexture1D_rmqtu")
+expand_mode = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 metadata/projectile = true

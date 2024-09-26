@@ -4,6 +4,8 @@ class_name MenuTankProcess extends CharacterBody2D
 @onready var global = get_node("/root/Global/")
 @onready var menu = get_node("/root/Menu/")
 @export var projectile: PackedScene
+@export var firing_particles: PackedScene
+@export var death_particles: PackedScene
 const MOVE_SPEED = 400.0
 const ACCELERATION = Vector2(0.05, 0.05)
 const FRICTION = 0.02
@@ -11,6 +13,7 @@ const TURRET_ROTATE_SPEED = 3.0
 const SPREAD = 1.0
 const RELOAD_TIME = 5.0
 var current_accel = Vector2(0.0, 0.0)
+var kapow
 var colours = [
 	Color(1,0.3137,0,0.9176),
 	Color(0,0.3137,1,0.9176),
@@ -25,6 +28,7 @@ var colours = [
 func _tank_process(delta, id, up, down, left, right, rotate_left, \
 rotate_right, fire):
 	velocity = Vector2.ZERO
+	kapow = fire
 	
 	# Make sure maps aren't switching
 	if not menu.switching:
@@ -66,13 +70,7 @@ rotate_right, fire):
 			$Turret.rotation -= TURRET_ROTATE_SPEED * delta
 		
 		# Firing
-		if Input.is_action_just_pressed(fire):
-			var new_projectile = projectile.instantiate()
-			new_projectile.global_position = $Turret/ProjectileSpawn.global_position
-			new_projectile.rotation_degrees = $Turret.global_rotation_degrees \
-			- randf_range(90 - SPREAD, 90 + SPREAD)
-			new_projectile.origin = id
-			add_sibling(new_projectile)
+		_trigger(id)
 	
 	# Maps are switching
 	elif menu.switching:
@@ -80,3 +78,17 @@ rotate_right, fire):
 			position = lerp(position, menu.p1_spawns[menu.selected_menu], 0.1)
 		else:
 			position = lerp(position, menu.p2_spawns[menu.selected_menu], 0.1)
+
+
+func _trigger(id):
+	if Input.is_action_just_pressed(kapow):
+		var new_projectile = projectile.instantiate()
+		var new_particles = firing_particles.instantiate()
+		new_projectile.global_position = $Turret/ProjectileSpawn.global_position
+		new_projectile.rotation_degrees = $Turret.global_rotation_degrees \
+		- randf_range(90 - SPREAD, 90 + SPREAD)
+		new_projectile.origin = id
+		new_particles.global_position = $Turret/ProjectileSpawn.global_position
+		new_particles.rotation_degrees = $Turret.global_rotation_degrees - 90
+		add_sibling(new_projectile)
+		add_sibling(new_particles)
