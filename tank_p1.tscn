@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://blvqwt8eetv7f"]
+[gd_scene load_steps=11 format=3 uid="uid://blvqwt8eetv7f"]
 
 [ext_resource type="Texture2D" uid="uid://4s8qkxttuoht" path="res://p1-tank-hull.png" id="1_ifaqg"]
 [ext_resource type="Script" path="res://tank_p1.gd" id="1_kqcbu"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://didj57lbr5qjw" path="res://firing_particles.tscn" id="3_304rl"]
 [ext_resource type="PackedScene" uid="uid://dcrn6hcviuiyd" path="res://death_particles.tscn" id="4_56t31"]
 [ext_resource type="FontFile" uid="uid://fy4as8fu8sms" path="res://DINAlternate-Bold.ttf" id="5_cyuvm"]
+[ext_resource type="AudioStream" uid="uid://khrufns57xbc" path="res://cannon-fire.ogg" id="7_bgc4c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgk7y"]
 radius = 29.0
@@ -43,6 +44,10 @@ target_position = Vector2(2.08165e-12, -1920)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vgk7y")
 metadata/player = true
+
+[node name="CannonFire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bgc4c")
+volume_db = -10.0
 
 [node name="Area2D" type="Area2D" parent="."]
 

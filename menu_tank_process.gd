@@ -92,3 +92,5 @@ func _trigger(id):
 		new_particles.rotation_degrees = $Turret.global_rotation_degrees - 90
 		add_sibling(new_projectile)
 		add_sibling(new_particles)
+		$CannonFire.pitch_scale = randf_range(0.5, 1.5)
+		$CannonFire.play()
