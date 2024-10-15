@@ -15,13 +15,13 @@ const RELOAD_TIME = 5.0
 var current_accel = Vector2(0.0, 0.0)
 var kapow
 var colours = [
-	Color(1,0.3137,0,0.9176),
-	Color(0,0.3137,1,0.9176),
-	Color(0,1,0.3137,0.9176),
-	Color(1,1,0.3137,0.9176),
-	Color(0.7843,0.7843,0.7843,0.9176),
-	Color(0.3137,0,1,0.9176),
-	Color(1,0,0.3137,0.9176),
+	Color(1,0.3137,0,0.9176), # Orange
+	Color(0,0.3137,1,0.9176), # Blue
+	Color(0,1,0.3137,0.9176), # Green
+	Color(1,1,0.3137,0.9176), # Yellow
+	Color(0.7843,0.7843,0.7843,0.9176), # Grey
+	Color(0.3137,0,1,0.9176), # Purple
+	Color(1,0,0.3137,0.9176), # Pink
 ]
 
 
