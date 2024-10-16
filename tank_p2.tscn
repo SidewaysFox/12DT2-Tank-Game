@@ -48,6 +48,10 @@ shape = SubResource("CircleShape2D_vgk7y")
 stream = ExtResource("7_3etxa")
 volume_db = -10.0
 
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_3etxa")
+pitch_scale = 0.2
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

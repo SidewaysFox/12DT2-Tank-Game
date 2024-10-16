@@ -56,6 +56,7 @@ var p2_spawns = [
 
 
 func _ready():
+	# Set everything up
 	_map_switch(1, true)
 	new_map.global_position.x = 0
 	next_map += 1
@@ -75,6 +76,7 @@ func _map_switch(_delta, initial: bool):
 	print("--------")
 	print(new_map)
 	print(current_map)
+	# Is this the first frame of switching?
 	if switch_start == true:
 		# Check if the map cycle needs to loop
 		if next_map == len(maps):
@@ -98,7 +100,7 @@ func _map_switch(_delta, initial: bool):
 		elif new_map.global_position.x <= 1:
 			new_map.global_position.x = 0
 			$Camera2D.zoom = maps[next_map][2]
-			# Delete previous map and set the new current map
+			# Delete previous map and set up the new current map
 			show_map_name = false
 			next_map += 1
 			current_map.queue_free()

@@ -24,6 +24,7 @@ func _process(delta):
 			new_particles.global_position = global_position
 			add_sibling(new_particles)
 			explosion2 = true
+			$Explosion.play()
 	else:
 		show()
 		explosion2 = false

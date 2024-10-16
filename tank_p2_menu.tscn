@@ -43,6 +43,10 @@ one_way_collision_margin = 4.0
 stream = ExtResource("7_dh0ls")
 volume_db = -10.0
 
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_dh0ls")
+pitch_scale = 0.2
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
