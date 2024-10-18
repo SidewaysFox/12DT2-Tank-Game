@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bibt8hkhcmsv6"]
+[gd_scene load_steps=7 format=3 uid="uid://bibt8hkhcmsv6"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_8p6bk"]
 [ext_resource type="PackedScene" uid="uid://ceulwtbfala4y" path="res://tank_p1_menu.tscn" id="2_isips"]
 [ext_resource type="PackedScene" uid="uid://llccokf4wxa5" path="res://tank_p2_menu.tscn" id="3_bhugq"]
+[ext_resource type="AudioStream" uid="uid://cktxxye8tekew" path="res://Tanks.ogg" id="4_8u015"]
+[ext_resource type="AudioStream" uid="uid://c4jxd8u0kgw3j" path="res://Battle.ogg" id="5_ksdbv"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_u4th3"]
+fade_time = 0.0
+stream_count = 2
+stream_0 = ExtResource("4_8u015")
+stream_1 = ExtResource("5_ksdbv")
 
 [node name="Menu" type="Node2D"]
 process_mode = 3
@@ -17,5 +25,9 @@ position = Vector2(960, 540)
 
 [node name="PlayTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_u4th3")
+autoplay = true
 
 [connection signal="timeout" from="PlayTimer" to="." method="_on_play_timer_timeout"]

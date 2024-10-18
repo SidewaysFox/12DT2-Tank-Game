@@ -1,6 +1,7 @@
 extends Node2D
 
 
+@onready var global = get_node("/root/Global")
 var selected_menu = 0
 var new_menu
 var current_menu
@@ -77,6 +78,7 @@ func _menu_switch(_delta, location, initial: bool):
 			switching = false
 			if location == 3:
 				$PlayTimer.start(1)
+				# Look it doesn't feel authentic if I don't do this
 
 
 func _process(delta):
@@ -112,4 +114,6 @@ func _process(delta):
 
 
 func _on_play_timer_timeout():
+	global.music_progress = $Music.get_playback_position() \
+	+ AudioServer.get_time_since_last_mix()
 	get_tree().change_scene_to_file("res://main.tscn")

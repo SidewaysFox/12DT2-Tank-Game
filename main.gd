@@ -70,6 +70,7 @@ func _ready():
 	ammo1 = global.max_ammo
 	ammo2 = global.max_ammo
 	reload = global.reload
+	$Music.play(global.music_progress)
 
 
 func _map_switch(_delta, initial: bool):

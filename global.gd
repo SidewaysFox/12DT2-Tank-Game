@@ -9,6 +9,8 @@ var max_ammo = 20
 var reload = 4
 var p1_colour = 1
 var p2_colour = 2
+var music_progress = 0.0
+var current_music
 var bus = AudioServer.get_bus_index("Master")
 
 

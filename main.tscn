@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dxucwwqgmdwg"]
+[gd_scene load_steps=35 format=3 uid="uid://dxucwwqgmdwg"]
 
 [ext_resource type="PackedScene" uid="uid://blvqwt8eetv7f" path="res://tank_p1.tscn" id="1_3hx61"]
 [ext_resource type="Script" path="res://main.gd" id="1_5jxqc"]
@@ -27,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://c764r1ipj0ef5" path="res://pause-back.png" id="25_evgxe"]
 [ext_resource type="Texture2D" uid="uid://qm4et00s5gjh" path="res://pause-back-click.png" id="26_iit38"]
 [ext_resource type="Texture2D" uid="uid://bki5tnws5tu5h" path="res://pause-back-hover.png" id="27_jnkry"]
+[ext_resource type="AudioStream" uid="uid://cktxxye8tekew" path="res://Tanks.ogg" id="28_d1l8y"]
+[ext_resource type="AudioStream" uid="uid://c4jxd8u0kgw3j" path="res://Battle.ogg" id="29_6hajg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i7ivc"]
 shader = ExtResource("6_08qe4")
@@ -43,6 +45,12 @@ keycode = 4194305
 
 [sub_resource type="Shortcut" id="Shortcut_j12ln"]
 events = [SubResource("InputEventKey_yvyto"), SubResource("InputEventKey_qts1k")]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_ko0v4"]
+fade_time = 0.0
+stream_count = 2
+stream_0 = ExtResource("28_d1l8y")
+stream_1 = ExtResource("29_6hajg")
 
 [node name="Main" type="Node2D"]
 process_mode = 1
@@ -232,6 +240,9 @@ vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_ko0v4")
 
 [connection signal="up_score" from="." to="Scores" method="_up_score"]
 [connection signal="timeout" from="MatchTimer" to="." method="_out_of_time"]

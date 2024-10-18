@@ -8,12 +8,28 @@ var position2: Vector2
 var player: int
 var active = false
 var slide = 0
+var colours = [
+	Color(1,0.3137,0,0.9176), # Orange
+	Color(0,0.3137,1,0.9176), # Blue
+	Color(0,1,0.3137,0.9176), # Green
+	Color(1,1,0.3137,0.9176), # Yellow
+	Color(0.7843,0.7843,0.7843,0.9176), # Grey
+	Color(0.3137,0,1,0.9176), # Purple
+	Color(1,0,0.3137,0.9176), # Pink
+]
 
 
 func _up_score(winner):
 	player = winner
 	active = true
 	slide = 1
+
+
+func _ready() -> void:
+	$CanvasLayer/P1Label.add_theme_color_override("font_color", \
+	colours[global.p1_colour - 1])
+	$CanvasLayer/P2Label.add_theme_color_override("font_color", \
+	colours[global.p2_colour - 1])
 
 
 func _process(_delta):
