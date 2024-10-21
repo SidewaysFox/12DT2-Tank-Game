@@ -39,6 +39,7 @@ var p2_spawns = [
 
 
 func _ready():
+	# Set up menu
 	_menu_switch(1, 0, true)
 	new_menu.global_position.x = 0
 	selected_menu += 1
@@ -46,13 +47,14 @@ func _ready():
 
 
 func _menu_switch(_delta, location, initial: bool):
+	# Is this the first frame of switching?
 	if switch_start == true:
 		play_hp = 3
 		settings_hp = 3
 		credits_hp = 3
 		quit_hp = 3
 		back_hp = 3
-		# Create new menu and position it in hierarchy
+		# Create new menu
 		new_menu = load(menus[location][0]).instantiate()
 		new_menu.global_position.x = 1920
 		add_child(new_menu)
@@ -61,7 +63,9 @@ func _menu_switch(_delta, location, initial: bool):
 	
 	# Menu transition
 	if not initial:
+		# Has it reached its destination yet?
 		if new_menu.global_position.x > 1:
+			# Lerp to the left
 			new_menu.global_position = lerp(new_menu.global_position, Vector2(0, 0), 0.1)
 			current_menu.global_position = lerp(current_menu.global_position, Vector2(-1920, 0), 0.1)
 			$Camera2D.zoom = lerp($Camera2D.zoom, menus[location][1], 0.1)
@@ -76,6 +80,7 @@ func _menu_switch(_delta, location, initial: bool):
 			p1_hp = 100
 			p2_hp = 100
 			switching = false
+			# Are we playing the game now?
 			if location == 3:
 				$PlayTimer.start(1)
 				# Look it doesn't feel authentic if I don't do this
@@ -85,7 +90,7 @@ func _process(delta):
 	if not switching:
 		# Should the menu be switched?
 		if not switch_start:
-			# What was pressed
+			# What was pressed (forgive me for this)
 			if settings_hp <= 0:
 				switch_start = true
 				switching = true
@@ -106,7 +111,7 @@ func _process(delta):
 				switching = true
 				selected_menu = 0
 				push_hint = false
-		
+		# Was the quit button pushed?
 		if quit_hp <= 0:
 			get_tree().quit()
 	else:
@@ -114,6 +119,8 @@ func _process(delta):
 
 
 func _on_play_timer_timeout():
+	# Save the music's progress
 	global.music_progress = $Music.get_playback_position() \
 	+ AudioServer.get_time_since_last_mix()
+	# Switch scene
 	get_tree().change_scene_to_file("res://main.tscn")

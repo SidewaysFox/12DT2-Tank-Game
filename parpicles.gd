@@ -6,9 +6,6 @@ extends GPUParticles2D
 
 
 func _process(_delta: float) -> void:
+	# Are we switching maps?
 	if main.switching and not scores.active:
-		_on_finished()
-
-
-func _on_finished() -> void:
-	queue_free()
+		queue_free()

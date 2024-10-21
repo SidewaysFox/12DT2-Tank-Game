@@ -248,7 +248,7 @@ stream = SubResource("AudioStreamPlaylist_ko0v4")
 [connection signal="timeout" from="MatchTimer" to="." method="_out_of_time"]
 [connection signal="timeout" from="SwitchWait" to="." method="_on_switch_wait_timeout"]
 [connection signal="pressed" from="CanvasLayer/PauseItems/PauseButton" to="CanvasLayer/PauseItems" method="_on_pause_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseItems/Paused/Resume" to="CanvasLayer/PauseItems" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseItems/Paused/Resume" to="CanvasLayer/PauseItems" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseItems/Paused/Settings" to="CanvasLayer/PauseItems" method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseItems/Paused/Menu" to="CanvasLayer/PauseItems" method="_on_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseItems/AltSettings/VolumeUp" to="CanvasLayer/PauseItems" method="_on_volume_up_pressed"]

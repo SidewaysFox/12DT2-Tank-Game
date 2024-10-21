@@ -14,7 +14,7 @@ const TURRET_ROTATE_SPEED = 3.0
 const SPREAD = 1.0
 const RELOAD_TIME = 5.0
 var current_accel = Vector2(0.0, 0.0)
-var kapow
+var fire_input
 var colours = [
 	Color(1,0.3137,0,0.9176), # Orange
 	Color(0,0.3137,1,0.9176), # Blue
@@ -30,7 +30,7 @@ var colours = [
 func _tank_process(delta, id, up, down, left, right, rotate_left, \
 rotate_right, fire):
 	velocity = Vector2.ZERO
-	kapow = fire
+	fire_input = fire
 	
 	# Make sure maps aren't switching
 	if not main.switching and not scores.active:
@@ -74,8 +74,9 @@ rotate_right, fire):
 		if Input.is_action_pressed(rotate_left):
 			$Turret.rotation -= TURRET_ROTATE_SPEED * delta
 		
-		# Firing
+		# Which tank is this?
 		if id == 1:
+			# Does it have ammo?
 			if main.ammo1 > 0:
 				_trigger(1)
 				$Ammo.text = str(main.ammo1)
@@ -84,6 +85,7 @@ rotate_right, fire):
 				$Ammo.text = "RELOADING"
 				main.reloading1 = true
 		else:
+			# Does it have ammo?
 			if main.ammo2 > 0:
 				_trigger(2)
 				$Ammo.text = str(main.ammo2)
@@ -101,23 +103,32 @@ rotate_right, fire):
 			position = lerp(position, main.p2_spawns[main.next_map], 0.1)
 
 
+# Draw the aiming line
 func _draw():
-	draw_line(Vector2(0,0), to_local($Turret/RayCast2D.get_collision_point()), Color(255, 255, 255, 0.5), 3.0)
+	draw_line(Vector2(0,0), to_local($Turret/RayCast2D.get_collision_point()), \
+	Color(255, 255, 255, 0.5), 3.0)
 
 
 func _trigger(id):
-	if Input.is_action_just_pressed(kapow):
+	# Are we supposed to fire?
+	if Input.is_action_just_pressed(fire_input):
+		# Set up new projectile and particles
 		var new_projectile = projectile.instantiate()
 		var new_particles = firing_particles.instantiate()
+		# Projectile
 		new_projectile.global_position = $Turret/ProjectileSpawn.global_position
 		new_projectile.rotation_degrees = $Turret.global_rotation_degrees \
 		- randf_range(90 - SPREAD, 90 + SPREAD)
+		# Particles
 		new_particles.global_position = $Turret/ProjectileSpawn.global_position
 		new_particles.rotation_degrees = $Turret.global_rotation_degrees - 90
+		# Go, my beauties
 		add_sibling(new_projectile)
 		add_sibling(new_particles)
+		# Make a sound
 		$CannonFire.pitch_scale = randf_range(0.7, 1.5)
 		$CannonFire.play()
+		# Reduce ammo count
 		if id == 1:
 			main.ammo1 -= 1
 		else:

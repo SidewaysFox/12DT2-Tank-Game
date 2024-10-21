@@ -5,5 +5,6 @@ extends GPUParticles2D
 
 
 func _process(_delta: float) -> void:
+	# Are we switching menus?
 	if menu.switching:
 		queue_free()

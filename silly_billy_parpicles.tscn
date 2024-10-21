@@ -36,5 +36,5 @@ wait_time = 7.0
 one_shot = true
 autostart = true
 
-[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="finished" from="." to="." method="queue_free"]
 [connection signal="timeout" from="Timer" to="." method="queue_free"]

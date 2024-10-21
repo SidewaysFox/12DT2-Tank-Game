@@ -92,7 +92,9 @@ func _map_switch(_delta, initial: bool):
 	
 	# Map transition
 	if not initial:
+		# Has it reached its destination yet?
 		if new_map.global_position.x > 1:
+			# Lerp to the left
 			new_map.global_position = lerp(new_map.global_position, Vector2(0, 0), 0.1)
 			current_map.global_position = lerp(current_map.global_position, Vector2(-1920, 0), 0.1)
 			$Camera2D.zoom = lerp($Camera2D.zoom, maps[next_map][2], 0.1)
@@ -110,6 +112,7 @@ func _map_switch(_delta, initial: bool):
 			p2_hp = 100
 			ammo1 = global.max_ammo
 			ammo2 = global.max_ammo
+			# If the timer's on, reset it
 			if global.timer_on:
 				$MatchTimer.start(global.timer_time)
 			$CanvasLayer/TimerLabel.add_theme_color_override("font_color", Color(0.78, 0.78, 0.78))
@@ -124,7 +127,7 @@ func _process(delta):
 		# Should the map be switched?
 		if not switch_start:
 			$CanvasLayer/TimerLabel.text = str(snapped($MatchTimer.time_left, 0.1))
-			# Who died
+			# Who died?
 			if p1_hp <= 0:
 				switch_start = true
 				$SwitchWait.start(2.5)
@@ -144,10 +147,13 @@ func _process(delta):
 		$CanvasLayer/NameRect.hide()
 
 
+# Small delay before beginning the switching process
+# Just for the score counters and other stuff to do their thing
 func _on_switch_wait_timeout():
 	switching = true
 
 
+# Time runs out
 func _out_of_time():
 	switch_start = true
 	$CanvasLayer/TimerLabel.add_theme_color_override("font_color", Color(1, 0.2, 0.2))

@@ -74,6 +74,7 @@ rotate_right, fire):
 	
 	# Maps are switching
 	elif menu.switching:
+		# Which ID is the tank?
 		if id == 1:
 			position = lerp(position, menu.p1_spawns[menu.selected_menu], 0.1)
 		else:
@@ -81,16 +82,22 @@ rotate_right, fire):
 
 
 func _trigger(id):
+	# Are we supposed to fire?
 	if Input.is_action_just_pressed(kapow):
+		# Set up new projectile and particles
 		var new_projectile = projectile.instantiate()
 		var new_particles = firing_particles.instantiate()
+		# Projectile
 		new_projectile.global_position = $Turret/ProjectileSpawn.global_position
 		new_projectile.rotation_degrees = $Turret.global_rotation_degrees \
 		- randf_range(90 - SPREAD, 90 + SPREAD)
 		new_projectile.origin = id
+		# Particles
 		new_particles.global_position = $Turret/ProjectileSpawn.global_position
 		new_particles.rotation_degrees = $Turret.global_rotation_degrees - 90
+		# Go, my beauties
 		add_sibling(new_projectile)
 		add_sibling(new_particles)
+		# Make a sound
 		$CannonFire.pitch_scale = randf_range(0.5, 1.5)
 		$CannonFire.play()

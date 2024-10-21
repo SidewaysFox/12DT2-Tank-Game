@@ -19,6 +19,7 @@ var colours = [
 ]
 
 
+# Start the scoring animation
 func _up_score(winner):
 	player = winner
 	active = true
@@ -26,6 +27,7 @@ func _up_score(winner):
 
 
 func _ready() -> void:
+	# Apply the appropriate colours
 	$CanvasLayer/P1Label.add_theme_color_override("font_color", \
 	colours[global.p1_colour - 1])
 	$CanvasLayer/P2Label.add_theme_color_override("font_color", \
@@ -36,12 +38,14 @@ func _process(_delta):
 	%P1Label/P1Score.text = str(global.score.x)
 	%P2Label/P2Score.text = str(global.score.y)
 	
+	# Is the animation rolling?
 	if active:
 		# Slide in
 		if slide == 1 and %P1Label.global_position.y < 79:
 			%P1Label.global_position = lerp(%P1Label.global_position, Vector2(890, 80), 0.15)
 			%P2Label.global_position = lerp(%P2Label.global_position, Vector2(890, 865), 0.15)
 		elif slide == 1 and %P1Label.global_position.y >= 79:
+			# Get exact position so there's no offset
 			slide = 0
 			%P1Label.global_position = Vector2(890, 80)
 			%P2Label.global_position = Vector2(890, 865)
@@ -51,6 +55,7 @@ func _process(_delta):
 			%P1Label.global_position = lerp(%P1Label.global_position, Vector2(890, -265), 0.15)
 			%P2Label.global_position = lerp(%P2Label.global_position, Vector2(890, 1210), 0.15)
 		elif slide == 2 and %P1Label.global_position.y <= -264:
+			# Get exact position so there's no offset
 			slide = 0
 			%P1Label.global_position = Vector2(890, -265)
 			%P2Label.global_position = Vector2(890, 1210)
@@ -58,7 +63,7 @@ func _process(_delta):
 
 
 func _on_timer_1_timeout():
-	# Add score
+	# Add score as appropriate
 	if player == 1:
 		global.score.x += 1
 	else:
