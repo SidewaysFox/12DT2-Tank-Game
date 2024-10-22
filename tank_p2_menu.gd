@@ -17,22 +17,30 @@ func _ready():
 func _process(delta):
 	# Run the tank process class function
 	# This handles input
-	_tank_process(delta, 2, "p2_up", "p2_down", "p2_left", "p2_right", \
-	"p2_rotate_left", "p2_rotate_right", "p2_fire")
+	_tank_process(delta, 2, "p2_up", "p2_down", "p2_left", "p2_right",
+			"p2_rotate_left", "p2_rotate_right", "p2_fire")
 	
 	# Set the right colour
 	$Hull.texture = load("res://p" + str(global.p2_colour) + "-tank-hull.png")
-	$Turret.texture = load("res://p" + str(global.p2_colour) + "-tank-turret.png")
+	$Turret.texture = load("res://p" + str(global.p2_colour)
+			+ "-tank-turret.png")
 	$HealthBar.modulate = colours[global.p2_colour - 1]
 	
 	# The following stuff manages the "tutorial" UI
 	# Have any of the directional inputs been made?
-	if Input.is_action_just_pressed("p2_up") or Input.is_action_just_pressed("p2_down") or \
-	Input.is_action_just_pressed("p2_left") or Input.is_action_just_pressed("p2_right"):
+	if (
+			Input.is_action_just_pressed("p2_up")
+			or Input.is_action_just_pressed("p2_down")
+			or Input.is_action_just_pressed("p2_left")
+			or Input.is_action_just_pressed("p2_right")
+	):
 		direction_inputted = true
 	
 	# Have either of the rotational inputs been made?
-	if Input.is_action_just_pressed("p2_rotate_left") or Input.is_action_just_pressed("p2_rotate_right"):
+	if (
+			Input.is_action_just_pressed("p2_rotate_left")
+			or Input.is_action_just_pressed("p2_rotate_right")
+	):
 		rotation_inputted = true
 	
 	# Has the fire input been made?

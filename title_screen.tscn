@@ -199,7 +199,7 @@ theme_override_fonts/font = ExtResource("3_4pn3y")
 theme_override_font_sizes/font_size = 24
 text = "Arrow keys/IJKL - Movement
 NM/<> - Rotate turret left and right
-Space bar - Fire"
+Space bar/B - Fire"
 horizontal_alignment = 1
 vertical_alignment = 1
 

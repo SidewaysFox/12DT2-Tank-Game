@@ -1,17 +1,21 @@
 class_name MenuTankProcess extends CharacterBody2D
 
 
+# Containers
 @onready var global = get_node("/root/Global/")
 @onready var menu = get_node("/root/Menu/")
+# Instantiations
 @export var projectile: PackedScene
 @export var firing_particles: PackedScene
 @export var death_particles: PackedScene
+# Constants (tank performance)
 const MOVE_SPEED = 400.0
 const ACCELERATION = Vector2(0.05, 0.05)
 const FRICTION = 0.02
 const TURRET_ROTATE_SPEED = 3.0
 const SPREAD = 1.0
 const RELOAD_TIME = 5.0
+# Other variables
 var current_accel = Vector2(0.0, 0.0)
 var kapow
 var colours = [
@@ -25,8 +29,9 @@ var colours = [
 ]
 
 
-func _tank_process(delta, id, up, down, left, right, rotate_left, \
-rotate_right, fire):
+# Main script
+func _tank_process(delta, id, up, down, left, right, rotate_left,
+		rotate_right, fire):
 	velocity = Vector2.ZERO
 	kapow = fire
 	
@@ -49,18 +54,22 @@ rotate_right, fire):
 				current_accel.x -= ACCELERATION.x
 		
 		# If not moving on X-axis, apply friction
-		if current_accel.x != 0 and not Input.is_action_pressed(right) \
-		and not Input.is_action_pressed(left):
+		if (
+				current_accel.x != 0 and not Input.is_action_pressed(right)
+				and not Input.is_action_pressed(left)
+		):
 			current_accel.x = move_toward(current_accel.x, 0, FRICTION)
 		
 		# If not moving on Y-axis, apply friction
-		if current_accel.y != 0 and not Input.is_action_pressed(up) \
-		and not Input.is_action_pressed(down):
+		if (
+				current_accel.y != 0 and not Input.is_action_pressed(up) \
+				and not Input.is_action_pressed(down)
+		):
 			current_accel.y = move_toward(current_accel.y, 0, FRICTION)
 		
 		# Calculate total velocity and move the tank
-		velocity = Vector2(1, 1).normalized() \
-		* Vector2(MOVE_SPEED * current_accel.x, MOVE_SPEED * current_accel.y)
+		velocity = Vector2(1, 1).normalized() * Vector2(MOVE_SPEED
+				* current_accel.x, MOVE_SPEED * current_accel.y)
 		move_and_slide()
 		
 		# Turret rotation
@@ -89,8 +98,9 @@ func _trigger(id):
 		var new_particles = firing_particles.instantiate()
 		# Projectile
 		new_projectile.global_position = $Turret/ProjectileSpawn.global_position
-		new_projectile.rotation_degrees = $Turret.global_rotation_degrees \
-		- randf_range(90 - SPREAD, 90 + SPREAD)
+		new_projectile.rotation_degrees = ($Turret.global_rotation_degrees
+				- randf_range(90 - SPREAD, 90 + SPREAD)
+		)
 		new_projectile.origin = id
 		# Particles
 		new_particles.global_position = $Turret/ProjectileSpawn.global_position

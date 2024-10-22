@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var menu = get_node("/root/Menu/")
 @onready var global = get_node("/root/Global/")
+@export var damage = 20
 @export var projectile_speed = 100000
 @export var particles: PackedScene
 var direction: Vector2
@@ -30,41 +31,41 @@ func _on_area_2d_body_entered(body):
 	if not body.has_meta("projectile"):
 		if body.has_meta("p1"):
 			# Reduce P1 HP
-			menu.p1_hp -= randi_range(15, 20)
+			menu.p1_hp -= damage
 		if body.has_meta("p2"):
 			# Reduce P2 HP
-			menu.p2_hp -= randi_range(15, 20)
-		if body.has_meta("play"):
+			menu.p2_hp -= damage
+		if body.has_meta("play"): # Play button
 			menu.play_hp -= 1
-		if body.has_meta("settings"):
+		if body.has_meta("settings"): # Settings button
 			menu.settings_hp -= 1
-		if body.has_meta("credits"):
+		if body.has_meta("credits"): # Credits button
 			menu.credits_hp -= 1
-		if body.has_meta("quit"):
+		if body.has_meta("quit"): # Quit button
 			menu.quit_hp -= 1
-		if body.has_meta("back"):
+		if body.has_meta("back"): # Back button
 			menu.back_hp -= 1
-		if body.has_meta("volume_up"):
+		if body.has_meta("volume_up"): # Vol up button
 			if global.volume < 91:
 				global.volume += 10
-		if body.has_meta("volume_down"):
+		if body.has_meta("volume_down"): # Vol down button
 			if global.volume > 9:
 				global.volume -= 10
-		if body.has_meta("timer"):
+		if body.has_meta("timer"): # Timer on/off button
 			if global.timer_on:
 				global.timer_on = false
 			else:
 				global.timer_on = true
-		if body.has_meta("time_up"):
+		if body.has_meta("time_up"): # Time up button
 			if global.timer_time < 996:
 				global.timer_time += 5
-		if body.has_meta("time_down"):
+		if body.has_meta("time_down"): # Time down button
 			if global.timer_time > 9:
 				global.timer_time -= 5
-		if body.has_meta("ammo_up"):
+		if body.has_meta("ammo_up"): # Ammo up button
 			if global.max_ammo < 999:
 				global.max_ammo += 1
-		if body.has_meta("ammo_down"):
+		if body.has_meta("ammo_down"): # Ammo down button
 			if global.max_ammo > 0:
 				global.max_ammo -= 1
 		if body.has_meta("colour") and origin == 1:
@@ -72,7 +73,7 @@ func _on_area_2d_body_entered(body):
 				global.p1_colour += 1
 			else:
 				global.p1_colour = 1
-		if body.has_meta("colour") and origin == 2:
+		if body.has_meta("colour") and origin == 2: # Colour button
 			if global.p2_colour < 7:
 				global.p2_colour += 1
 			else:

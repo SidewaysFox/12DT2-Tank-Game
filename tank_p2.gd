@@ -9,15 +9,16 @@ func _ready():
 	# Set up P2 tank
 	position = main.p2_spawns[main.next_map]
 	$Hull.texture = load("res://p" + str(global.p2_colour) + "-tank-hull.png")
-	$Turret.texture = load("res://p" + str(global.p2_colour) + "-tank-turret.png")
+	$Turret.texture = load("res://p" + str(global.p2_colour)
+			+ "-tank-turret.png")
 	$HealthBar.modulate = colours[global.p2_colour - 1]
 
 
 func _process(delta):
 	# Run the tank process class function
 	# This handles input
-	_tank_process(delta, 2, "p2_up", "p2_down", "p2_left", "p2_right", \
-	"p2_rotate_left", "p2_rotate_right", "p2_fire")
+	_tank_process(delta, 2, "p2_up", "p2_down", "p2_left", "p2_right",
+			"p2_rotate_left", "p2_rotate_right", "p2_fire")
 	
 	# Has P2 died?
 	if main.p2_hp <= 0:

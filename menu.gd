@@ -1,6 +1,7 @@
 extends Node2D
 
 
+# Menu state variables
 @onready var global = get_node("/root/Global")
 var selected_menu = 0
 var new_menu
@@ -17,6 +18,7 @@ var quit_hp = 3
 var back_hp = 3
 var push_hint = true
 
+# Menu array
 var menus = [
 	["res://title_screen.tscn", Vector2(1, 1)],
 	["res://settings_screen.tscn", Vector2(1, 1)],
@@ -24,6 +26,7 @@ var menus = [
 	["res://loading_screen.tscn", Vector2(1, 1)]
 ]
 
+# Spawn locations for menus
 var p1_spawns = [
 	Vector2(300, 540),
 	Vector2(300, 540),
@@ -66,8 +69,10 @@ func _menu_switch(_delta, location, initial: bool):
 		# Has it reached its destination yet?
 		if new_menu.global_position.x > 1:
 			# Lerp to the left
-			new_menu.global_position = lerp(new_menu.global_position, Vector2(0, 0), 0.1)
-			current_menu.global_position = lerp(current_menu.global_position, Vector2(-1920, 0), 0.1)
+			new_menu.global_position = lerp(new_menu.global_position,
+					Vector2(0, 0), 0.1)
+			current_menu.global_position = lerp(current_menu.global_position,
+					Vector2(-1920, 0), 0.1)
 			$Camera2D.zoom = lerp($Camera2D.zoom, menus[location][1], 0.1)
 		
 		# End of transition
@@ -83,7 +88,7 @@ func _menu_switch(_delta, location, initial: bool):
 			# Are we playing the game now?
 			if location == 3:
 				$PlayTimer.start(1)
-				# Look it doesn't feel authentic if I don't do this
+				# Look, it doesn't feel authentic if I don't do this
 
 
 func _process(delta):
@@ -120,7 +125,8 @@ func _process(delta):
 
 func _on_play_timer_timeout():
 	# Save the music's progress
-	global.music_progress = $Music.get_playback_position() \
-	+ AudioServer.get_time_since_last_mix()
+	global.music_progress = ($Music.get_playback_position()
+			+ AudioServer.get_time_since_last_mix()
+	)
 	# Switch scene
 	get_tree().change_scene_to_file("res://main.tscn")

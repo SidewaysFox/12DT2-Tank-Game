@@ -28,10 +28,10 @@ func _up_score(winner):
 
 func _ready() -> void:
 	# Apply the appropriate colours
-	$CanvasLayer/P1Label.add_theme_color_override("font_color", \
-	colours[global.p1_colour - 1])
-	$CanvasLayer/P2Label.add_theme_color_override("font_color", \
-	colours[global.p2_colour - 1])
+	$CanvasLayer/P1Label.add_theme_color_override("font_color",
+			colours[global.p1_colour - 1])
+	$CanvasLayer/P2Label.add_theme_color_override("font_color",
+			colours[global.p2_colour - 1])
 
 
 func _process(_delta):
@@ -42,8 +42,10 @@ func _process(_delta):
 	if active:
 		# Slide in
 		if slide == 1 and %P1Label.global_position.y < 79:
-			%P1Label.global_position = lerp(%P1Label.global_position, Vector2(890, 80), 0.15)
-			%P2Label.global_position = lerp(%P2Label.global_position, Vector2(890, 865), 0.15)
+			%P1Label.global_position = lerp(%P1Label.global_position,
+					Vector2(890, 80), 0.15)
+			%P2Label.global_position = lerp(%P2Label.global_position,
+					Vector2(890, 865), 0.15)
 		elif slide == 1 and %P1Label.global_position.y >= 79:
 			# Get exact position so there's no offset
 			slide = 0
@@ -52,8 +54,10 @@ func _process(_delta):
 			$Timer1.start(0.4)
 		# Slide out
 		if slide == 2 and %P1Label.global_position.y > -264:
-			%P1Label.global_position = lerp(%P1Label.global_position, Vector2(890, -265), 0.15)
-			%P2Label.global_position = lerp(%P2Label.global_position, Vector2(890, 1210), 0.15)
+			%P1Label.global_position = lerp(%P1Label.global_position,
+					Vector2(890, -265), 0.15)
+			%P2Label.global_position = lerp(%P2Label.global_position,
+					Vector2(890, 1210), 0.15)
 		elif slide == 2 and %P1Label.global_position.y <= -264:
 			# Get exact position so there's no offset
 			slide = 0

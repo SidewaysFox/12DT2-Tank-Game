@@ -30,25 +30,29 @@ func _process(_delta):
 	
 	# Play button pushing
 	if menu.play_hp > 0:
-		$PlayButton/Sprite2D.texture = load("res://menu-play-button-" + str(menu.play_hp) + ".png")
+		$PlayButton/Sprite2D.texture = load("res://menu-play-button-"
+				+ str(menu.play_hp) + ".png")
 	else:
 		$PlayButton.hide()
 	
 	# Settings button pushing
 	if menu.settings_hp > 0:
-		$SettingsButton/Sprite2D.texture = load("res://menu-settings-button-" + str(menu.settings_hp) + ".png")
+		$SettingsButton/Sprite2D.texture = load("res://menu-settings-button-"
+				+ str(menu.settings_hp) + ".png")
 	else:
 		$SettingsButton.hide()
 	
 	# Credits button pushing
 	if menu.credits_hp > 0:
-		$CreditsButton/Sprite2D.texture = load("res://menu-credits-button-" + str(menu.credits_hp) + ".png")
+		$CreditsButton/Sprite2D.texture = load("res://menu-credits-button-"
+				+ str(menu.credits_hp) + ".png")
 	else:
 		$CreditsButton.hide()
 	
 	# Quit button pushing
 	if menu.quit_hp > 0:
-		$QuitButton/Sprite2D.texture = load("res://menu-quit-button-" + str(menu.quit_hp) + ".png")
+		$QuitButton/Sprite2D.texture = load("res://menu-quit-button-"
+				+ str(menu.quit_hp) + ".png")
 	else:
 		$QuitButton.hide()
 

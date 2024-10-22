@@ -1,6 +1,7 @@
 extends Node2D
 
 
+# Game state variables
 @onready var global = get_node("/root/Global")
 var next_map = 0
 var new_map
@@ -19,6 +20,7 @@ var reloading2 = false
 
 signal up_score(winner)
 
+# Map array
 var maps = [
 	["res://maps/map_8.tscn", "Simulation", Vector2(1, 1)],
 	["res://maps/map_6.tscn", "Empty", Vector2(1, 1)],
@@ -31,6 +33,7 @@ var maps = [
 	["res://maps/map_4.tscn", "Grasswall Duel", Vector2(2, 2)],
 ]
 
+# Spawn locations for each map
 var p1_spawns = [
 	Vector2(300, 540), #8
 	Vector2(200, 200), #6
@@ -95,8 +98,10 @@ func _map_switch(_delta, initial: bool):
 		# Has it reached its destination yet?
 		if new_map.global_position.x > 1:
 			# Lerp to the left
-			new_map.global_position = lerp(new_map.global_position, Vector2(0, 0), 0.1)
-			current_map.global_position = lerp(current_map.global_position, Vector2(-1920, 0), 0.1)
+			new_map.global_position = lerp(new_map.global_position,
+					Vector2(0, 0), 0.1)
+			current_map.global_position = lerp(current_map.global_position,
+					Vector2(-1920, 0), 0.1)
 			$Camera2D.zoom = lerp($Camera2D.zoom, maps[next_map][2], 0.1)
 		
 		# End of transition
@@ -115,7 +120,8 @@ func _map_switch(_delta, initial: bool):
 			# If the timer's on, reset it
 			if global.timer_on:
 				$MatchTimer.start(global.timer_time)
-			$CanvasLayer/TimerLabel.add_theme_color_override("font_color", Color(0.78, 0.78, 0.78))
+			$CanvasLayer/TimerLabel.add_theme_color_override("font_color",
+					Color(0.78, 0.78, 0.78))
 			switching = false
 	print(new_map)
 	print(current_map)
@@ -126,7 +132,8 @@ func _process(delta):
 	if not switching:
 		# Should the map be switched?
 		if not switch_start:
-			$CanvasLayer/TimerLabel.text = str(snapped($MatchTimer.time_left, 0.1))
+			$CanvasLayer/TimerLabel.text = str(
+					snapped($MatchTimer.time_left, 0.1))
 			# Who died?
 			if p1_hp <= 0:
 				switch_start = true
@@ -156,5 +163,6 @@ func _on_switch_wait_timeout():
 # Time runs out
 func _out_of_time():
 	switch_start = true
-	$CanvasLayer/TimerLabel.add_theme_color_override("font_color", Color(1, 0.2, 0.2))
+	$CanvasLayer/TimerLabel.add_theme_color_override("font_color",
+			Color(1, 0.2, 0.2))
 	$SwitchWait.start(1)
