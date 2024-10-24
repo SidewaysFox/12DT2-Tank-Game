@@ -31,6 +31,7 @@ func _process(delta):
 			add_sibling(new_particles)
 			explosion2 = true
 			$Explosion.play()
+			get_node("/root/Main/MatchTimer").stop()
 	else:
 		show()
 		explosion2 = false

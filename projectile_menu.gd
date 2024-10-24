@@ -66,7 +66,7 @@ func _on_area_2d_body_entered(body):
 			if global.max_ammo < 999:
 				global.max_ammo += 1
 		if body.has_meta("ammo_down"): # Ammo down button
-			if global.max_ammo > 0:
+			if global.max_ammo > 1:
 				global.max_ammo -= 1
 		if body.has_meta("colour") and origin == 1:
 			if global.p1_colour < 7:
