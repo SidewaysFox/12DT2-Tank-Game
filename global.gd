@@ -2,7 +2,7 @@ extends Node
 
 
 # Global variables
-var score = Vector2(0, 0)
+var score = Vector2i(0, 0)
 var volume = 100.0
 var timer_on = true
 var timer_time = 60

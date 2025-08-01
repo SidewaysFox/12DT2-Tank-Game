@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bifeekbl51eaj"]
 
-[ext_resource type="Script" path="res://scores.gd" id="1_6ufno"]
+[ext_resource type="Script" uid="uid://bgqjaa84kevs8" path="res://scores.gd" id="1_6ufno"]
 [ext_resource type="FontFile" uid="uid://fy4as8fu8sms" path="res://DINAlternate-Bold.ttf" id="2_royol"]
 
 [node name="Scores" type="Node2D"]

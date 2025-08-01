@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://blvqwt8eetv7f"]
 
 [ext_resource type="Texture2D" uid="uid://4s8qkxttuoht" path="res://p1-tank-hull.png" id="1_ifaqg"]
-[ext_resource type="Script" path="res://tank_p1.gd" id="1_kqcbu"]
+[ext_resource type="Script" uid="uid://cdvqy4q3wkgru" path="res://tank_p1.gd" id="1_kqcbu"]
 [ext_resource type="PackedScene" uid="uid://cb5h1ojexjid8" path="res://projectile.tscn" id="2_e32cb"]
 [ext_resource type="Texture2D" uid="uid://ct3blvyt43y4f" path="res://p1-tank-turret.png" id="2_sslr7"]
 [ext_resource type="PackedScene" uid="uid://didj57lbr5qjw" path="res://firing_particles.tscn" id="3_304rl"]

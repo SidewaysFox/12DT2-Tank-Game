@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cufev5lggoewn"]
 
 [ext_resource type="Texture2D" uid="uid://bdqx77n4gvlx" path="res://bg-menu.png" id="1_v1486"]
-[ext_resource type="Script" path="res://title_screen.gd" id="1_y3y1n"]
+[ext_resource type="Script" uid="uid://cncgg8g00og5g" path="res://title_screen.gd" id="1_y3y1n"]
 [ext_resource type="Texture2D" uid="uid://dfnq4cpusdgi0" path="res://tank-game-title.png" id="2_utm0x"]
 [ext_resource type="FontFile" uid="uid://fy4as8fu8sms" path="res://DINAlternate-Bold.ttf" id="3_4pn3y"]
 [ext_resource type="Texture2D" uid="uid://dpoofp5w1oym2" path="res://menu-play-button-3.png" id="3_lgfcy"]

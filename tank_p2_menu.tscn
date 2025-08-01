@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://llccokf4wxa5"]
 
-[ext_resource type="Script" path="res://tank_p2_menu.gd" id="1_cnsmg"]
+[ext_resource type="Script" uid="uid://74tf35rfxrd3" path="res://tank_p2_menu.gd" id="1_cnsmg"]
 [ext_resource type="PackedScene" uid="uid://bbscirgbc23sn" path="res://projectile_menu.tscn" id="2_6l0ip"]
 [ext_resource type="Texture2D" uid="uid://dysqx8y2hbe14" path="res://p2-tank-hull.png" id="3_oucrk"]
 [ext_resource type="PackedScene" uid="uid://didj57lbr5qjw" path="res://firing_particles.tscn" id="3_spryu"]

@@ -1,4 +1,4 @@
-extends GPUParticles2D
+extends CPUParticles2D
 
 
 @onready var main = get_node("/root/Main/")

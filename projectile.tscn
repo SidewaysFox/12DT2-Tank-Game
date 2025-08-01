@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cb5h1ojexjid8"]
 
-[ext_resource type="Script" path="res://projectile.gd" id="1_7d8sh"]
+[ext_resource type="Script" uid="uid://fb53qg0fqlgo" path="res://projectile.gd" id="1_7d8sh"]
 [ext_resource type="PackedScene" uid="uid://ccd11nxxncqlt" path="res://silly_billy_parpicles.tscn" id="2_ujnv6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaayj"]
