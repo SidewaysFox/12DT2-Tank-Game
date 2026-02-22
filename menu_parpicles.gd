@@ -1,4 +1,4 @@
-extends CPUParticles2D
+extends GPUParticles2D
 
 
 @onready var menu = get_node("/root/Menu/")
